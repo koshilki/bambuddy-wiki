@@ -161,6 +161,16 @@ The default **Administrators** group holds all four. **Operators** hold
 `cost_centers:read_own`, so they can see their own spending and print against
 the centers they belong to. Grant the rest to whoever does your accounting.
 
+### API keys { #api-keys }
+
+With billing on, a job queued through an [API key](api-keys.md) needs a
+`cost_center_id` like any other. A key with **Manage Queue** finds the ones
+it may use at `GET /api/v1/finance/cost-centers/mine`. That endpoint returns
+the cost centers of the key's owner, and a key can charge only those, or any
+center if its owner is an administrator. A key created before keys had owners
+has none, and needs to be recreated to queue with billing on. Balances, the
+ledger and cost-center administration stay closed to API keys.
+
 ---
 
 ## :material-alert-octagon: Printer kill switch { #printer-kill-switch }

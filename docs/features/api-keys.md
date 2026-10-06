@@ -188,6 +188,18 @@ restore, firmware installs). The ten toggles you can set on a key are:
     The flip side is worth planning for: such a key can edit and delete
     *every* user's rows within its toggles, not only its owner's.
 
+!!! info "Queueing runs as the owner"
+    A key that adds to the queue (`POST /queue/`, print orders) is checked the
+    way its owner's own session would be. It can queue only archives and
+    library files its owner may read and reprint, and with
+    [billing](billing.md#api-keys) on, it can charge only cost centers its
+    owner may print with. The queued item belongs to the owner, so it shows up
+    in their queue.
+
+    A key created before keys had owners acts for nobody. It is limited to its
+    toggles, owns no files and cannot use any cost center. Recreate it to
+    print on a server with billing on.
+
 !!! info "Why no general 'Write Settings' or 'Admin' permission?"
     The `PATCH /settings` route can rewrite SMTP/LDAP/MQTT credentials, the
     HA access token, and similar secrets. Allowing those writes from any

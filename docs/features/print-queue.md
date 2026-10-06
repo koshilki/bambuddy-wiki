@@ -1144,6 +1144,15 @@ When a model-based queue item has required filaments:
 3. Jobs wait until a compatible printer becomes available
 4. The **Waiting** status (purple badge) shows why a job is waiting
 
+### Enough Filament
+
+Before a model-based job is given a printer, Bambuddy also checks that the spools it would use there hold enough filament for the print. The check uses the same spool weights as the **Print Anyway** warning, so it needs spools assigned in Inventory or Spoolman.
+
+- If an idle printer of the model would run short, the job goes to another idle printer of that model that has enough.
+- If every idle printer would run short, the job waits on the first of them for a manual start, with **Print Anyway** available as before.
+- While it waits, Bambuddy looks every two minutes for another idle printer of the model that has enough, and moves the job there. It only moves a job to a printer where every spool the print uses is assigned in Inventory or Spoolman with a known weight, because the job then starts without anyone being asked. To print on the printer it waits on after loading a fuller spool there, press **Start**.
+- A job with alternative files for other printer models stays on its printer until you start it.
+
 ### Filament Override
 
 When using model-based assignment, you can override the filament colors and types from the original 3MF file:
