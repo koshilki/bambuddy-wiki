@@ -178,6 +178,7 @@ Custom materials work just like built-in ones for inventory tracking, usage hist
 | **Material No.** | Your internal purchasing / article number (e.g. *15* = Bambu Lab PLA Basic). Shared by every spool of the same product — see [Material Numbers](#material-numbers). Optional. |
 | **Low-stock threshold (this spool)** | Per-spool override of the global low-stock percentage. Leave blank to use whatever's set in the inventory's stat-card threshold control (default 20 %). Useful for marking *production* spools to alert earlier (e.g. 50 %) while letting *prototype* spools stay quiet until much later. The override applies to the stat-card "Low Stock" count, the "Low Stock" filter and the [Low Filament notification](notifications.md#printer-events). |
 | **Storage Location** | Physical shelf, drawer, or drybox from your [locations catalog](storage-locations.md). Pick an existing entry from the dropdown or type a new name and click **Add**. |
+| **Last dried** | When the spool was last dried. Filled in by AMS drying; set it here, or click **Now**, for a spool dried in an external dryer. Shown when editing a spool. See [Drying Record](#drying-record). |
 | **Note** | Free-text notes about the spool |
 
 ### Printers Tab
@@ -443,6 +444,22 @@ Each spool's `weight_used` counter accumulates over the lifetime of the spool an
 Both actions leave the spool itself untouched: the label weight, remaining weight calculation, AMS lock flag (`weight_locked`), cost-per-kg, and storage location are not changed. Only the accumulated consumption counter goes back to 0. Future prints continue to increment normally — unlike manually editing the *Current Weight* field in the spool form, which auto-locks the spool and stops AMS auto-sync.
 
 The bulk variant is the recommended way to clean-slate the **Total Consumed** stat (for example, after deleting all archives on a test instance) so subsequent prints track from zero. **Spoolman users get the same actions** — the request routes to Spoolman's PATCH `/spool/{id}` with `used_weight: 0` for each target instead of the built-in inventory table, but the UX is identical.
+
+---
+
+## :material-fire: Drying Record
+
+Each spool remembers when it was last dried, so you can still tell after it has left the AMS. The **Last dried** column shows the date, with the temperature and drying time underneath when they are known. It's visible by default and sortable; the card view shows the same line.
+
+**Filled in by AMS drying.** When an [AMS drying run](ams.md#remote-ams-drying) ends, every spool assigned to a slot of that AMS is marked as dried. Spools that aren't assigned to a slot are not.
+
+- **The run must have lasted at least half its length.** A run stopped before then, from Bambuddy, on the printer, or because a print took priority, doesn't count, and the spool keeps its earlier record. A run stopped after that counts, with the time it actually ran.
+- **The temperature** is known only for runs Bambuddy started. The printer doesn't report it for runs started on its screen or in Bambu Studio.
+- **The drying time** is how long the run actually lasted, not how long it was set for. It's unknown when Bambuddy started after the run did.
+
+**Set by hand.** For a spool dried in an external dryer, open it, go to **Color & Cost**, and set **Last dried**, or click **Now**. A date set by hand has no temperature or drying time. Clear the field to remove the record.
+
+Works the same with [Spoolman](spoolman.md): the record is kept in three extra fields on the Spoolman spool (`bambu_last_dried_at`, `bambu_last_dried_temp`, `bambu_last_dried_hours`).
 
 ---
 
