@@ -487,6 +487,14 @@ spool's **`Initial Weight`** (or the filament's **`Weight`** if the spool has
 none), so a 250 g spool is priced as a 250 g spool. The filament's price is
 divided by the filament's **`Weight`**.
 
+!!! note "While the print is running"
+    When a print starts, Bambuddy already prices it the same way from the
+    sliced file's per-slot estimate and the spools in the mapped trays. The
+    archive card shows that figure with a `~` until the print finishes and the
+    cost of what was actually used replaces it. A print whose slots can't be
+    matched to trays at the start (no mapping from the slicer or the queue, and
+    no colour match) keeps the default-rate figure until then.
+
 !!! note "When a price is missing"
     Grams that no spool could price are charged at **Settings → Default
     Filament Cost**, which is a per-kilogram rate. That covers a spool with no
