@@ -75,6 +75,8 @@ Back up before an OS upgrade, before re-flashing, and on a schedule. Keep the fi
 
 See [Backup &amp; Restore](../features/backup.md) for the full picture, including scheduled backups.
 
+The backups Bambuddy saves on the appliance itself &mdash; **Scheduled Backups**, on the schedule or with **Run Now** &mdash; can also be downloaded from the [admin panel](admin-panel.md#bambuddy-backup), under **Dashboard** &rarr; **Bambuddy Backup**. That works when Bambuddy is down, which is when you need it most.
+
 ### What the backup does not contain
 
 The backup covers *Bambuddy*. It does not cover the *appliance*:

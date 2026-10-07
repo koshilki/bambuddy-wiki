@@ -32,6 +32,15 @@ Health at a glance:
 
 Plus clean **reboot** and **shutdown** buttons. Use them rather than pulling power; an SD card interrupted mid-write is the most common way to kill an appliance.
 
+### Bambuddy Backup
+
+The backups Bambuddy has saved on the appliance, newest first, each with its date, its size and a **Download** button. They are the ones Bambuddy writes under **Settings** &rarr; **Backup** &rarr; **Scheduled Backups**, on the schedule or with **Run Now**. Until there is one, the card says where to make it.
+
+The panel keeps running when Bambuddy does not, so this is how you get your data off the box when Bambuddy itself will not start &mdash; after a failed update, say. Download one before a factory reset or a re-flash, and keep it somewhere other than the appliance: a backup on the same SD card is lost with it.
+
+!!! info "Your data is never locked away"
+    The card works on a unit whose subscription has ended or whose registration was revoked. Updates and management actions stop; your backups stay downloadable.
+
 ### The containers
 
 The appliance runs two containers: Bambuddy and its [PostgreSQL](index.md#the-database). The Services card shows both, because the services behind them do not answer the question &mdash; `bambuddy.service` reports that Docker Compose was started, which stays true while the database restarts in a loop underneath it. A container that is running but failing its health check is shown as such.
