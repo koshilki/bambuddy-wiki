@@ -8,7 +8,7 @@ description: Flash the Bambuddy Appliance image, run the setup wizard, and reach
 From a downloaded image to a running Bambuddy in about half an hour, most of which is the card writing itself.
 
 !!! tip "There is a printed version"
-    The same walkthrough is available as a [16-page A5 booklet](https://bambuddy.cool/assets/downloads/bambuddy-appliance-quickstart.pdf) &mdash; the one subscribers get. Handy to have beside you rather than on the screen you are configuring.
+    The same walkthrough is available as a [20-page A5 booklet](https://bambuddy.cool/assets/downloads/bambuddy-appliance-quickstart.pdf) &mdash; the one subscribers get, also [in German](https://bambuddy.cool/assets/downloads/bambuddy-appliance-quickstart-de.pdf). Handy to have beside you rather than on the screen you are configuring.
 
 ---
 
