@@ -1321,6 +1321,10 @@ Hover any small thumbnail to pop out a **192&times;192 preview** next to it. Des
 
 Sibling rows from the same batch collapse into one parent row with **status-rollup chips** (e.g. `3 OK / 1 failed`) and the latest activity timestamp. Click the parent to expand and see each child individually.
 
+### Clear History
+
+**Clear History** (History tab, needs permission to delete queue items) removes the finished runs the History tab shows under the current **printer**, **status** and **location** filters, so you can clear one printer's or one location's history and keep the rest. The confirmation names how many that is. Runs a batch order still needs are kept as cancelled, and the result says how many were kept.
+
 History helps you:
 
 - Track throughput
@@ -1337,8 +1341,17 @@ Manage queue programmatically:
 # Add to queue (accepts an optional batch_id to attach to an existing batch)
 POST /api/v1/queue
 
-# Get queue status
+# Get queue status. `status` takes several statuses comma-separated,
+# e.g. ?status=pending,printing
 GET /api/v1/queue
+
+# History (completed / failed / skipped / cancelled), one page at a time:
+# ?printer_id=&status=&location=&sort_by=date|name|printer&reverse=&limit=&offset=
+# Returns {items, total, locations}
+GET /api/v1/queue/history
+
+# Remove the history matching printer_id / status / location
+POST /api/v1/queue/history/clear
 
 # Remove from queue. Responds with `deleted`: false when the item was cancelled
 # instead, because it is the last run its order could re-queue that plate from
