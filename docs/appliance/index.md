@@ -124,11 +124,11 @@ The appliance is sold at [get.bambuddy.cool](https://get.bambuddy.cool/#pricing)
 
 | Edition | Price | Updates | Support |
 |---|---|---|---|
-| **Personal** | &euro;79 once | 12 months | 12 months |
-| **Lifetime** | &euro;199 once | for as long as the appliance is developed | 12 months |
-| **Business** | &euro;249/year | while subscribed | while subscribed, with a stated response time |
+| **Personal** | &euro;79 once | 12 months | 12 months, through GitHub issues |
+| **Lifetime** | &euro;199 once | for as long as the appliance is developed | 12 months, through GitHub issues |
+| **Business** | &euro;249/year | while subscribed | while subscribed, by email, handled first, with a stated response time |
 
-Personal and Lifetime are for non-commercial use; commercial use needs Business. One purchase covers one appliance, whatever number of printers you point it at.
+Personal and Lifetime are for non-commercial use; commercial use needs Business. Support for Personal and Lifetime runs through the [public issue tracker](https://github.com/maziggy/bambuddy/issues), so never post your licence key there; questions about your key, an order or a refund go to support@bambuddy.cool for every edition. One purchase covers one appliance, whatever number of printers you point it at.
 
 Your licence key arrives by email after the purchase. The setup wizard asks for it, the appliance sends it when it registers, and that is what opens the update channel. Entering it is optional: skip the screen and the box runs exactly the same, it simply receives no appliance updates until you add the key in the panel.
 
