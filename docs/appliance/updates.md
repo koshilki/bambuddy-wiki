@@ -50,7 +50,7 @@ sudo bambuddy-appliance upgrade-appliance
 
 It is a Debian package from Bambuddy's own signed archive, installed in place &mdash; no reboot, no card. The lane health-checks Bambuddy afterwards and puts the previous version back if it does not come up, the same as the Bambuddy lane.
 
-!!! info "This lane needs an active subscription"
+!!! info "This lane needs an active licence"
     The archive hands the package only to a registered appliance that is entitled to it. An expired or revoked unit keeps running and keeps getting Debian security updates; it stops getting the appliance layer. See [Registration](registration.md).
 
 !!! success "The signature is what is trusted, not the server"
@@ -107,7 +107,7 @@ Very little requires a re-flash. Bambuddy, the appliance layer and Debian all up
 !!! info "A re-flashed unit has to be let back in"
     The identity comes from the board, so the appliance comes back as the same device &mdash; but its credential lived on the card, and the registrar will not replace one on the strength of a serial number. An operator opens a one-shot re-claim window, and the unit takes a fresh credential by itself. See [Registration](registration.md#re-flashing-a-registered-unit).
 
-    Keep your subscription key: the wizard asks for it again.
+    Keep your licence key: the wizard asks for it again.
 
 ---
 

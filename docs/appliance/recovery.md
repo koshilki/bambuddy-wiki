@@ -31,7 +31,7 @@ The appliance stops Bambuddy, wipes its user data, forgets the first-boot marker
 |---|---|
 | Bambuddy's database &mdash; printers, queue, history, user accounts | The operating system and Bambuddy itself |
 | All uploads, archives, and timelapses | Partner branding |
-| Session and encryption secrets | The registration identity and the subscription key |
+| Session and encryption secrets | The registration identity and the licence key |
 | Saved WiFi credentials | |
 | Hostname, timezone, locale | |
 | **The appliance password** | |
