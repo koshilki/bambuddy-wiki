@@ -203,7 +203,7 @@ volumes:
       - DATABASE_URL=postgresql+asyncpg://bambuddy:yourpassword@db-host:5432/bambuddy
     ```
 
-    Bambuddy will automatically create all tables on first startup. Backup/restore uses `pg_dump`/`pg_restore` instead of file copy.
+    Bambuddy will automatically create all tables on first startup. Backup/restore uses `pg_dump`/`pg_restore` instead of file copy. PostgreSQL 13 or newer is required; see [PostgreSQL](../features/postgresql.md).
 
 ### External library folders (BAMBUDDY_EXTERNAL_ROOTS)
 

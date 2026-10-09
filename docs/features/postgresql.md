@@ -32,7 +32,7 @@ SQLite works great for most users. Consider PostgreSQL if you:
 
 ### 1. Install PostgreSQL
 
-Skip this step if you already have a PostgreSQL server running.
+Skip this step if you already have a PostgreSQL server running. It must be **PostgreSQL 13 or newer**; Bambuddy does not start on 12 or older.
 
 === ":material-docker: Docker (Recommended)"
 
@@ -310,7 +310,7 @@ DB_MAX_OVERFLOW=180   # 200-connection ceiling
 :   No. Bambuddy's backup system exports data using pure Python (SQLAlchemy + sqlite3), so no external PostgreSQL tools are required on the Bambuddy server.
 
 **What PostgreSQL version is supported?**
-:   PostgreSQL 14 or newer is recommended. The `asyncpg` driver supports PostgreSQL 9.5+, but Bambuddy uses features like `GIN` indexes that work best on modern versions.
+:   PostgreSQL **13 or newer** is required; 14 or newer is recommended, and 16 is what the examples here and the Bambuddy Appliance use. Bambuddy is tested on 13 to 16. **PostgreSQL 12 and older are not supported:** Bambuddy does not start on them, because some of its startup migrations use column types those versions reject. PostgreSQL 12 itself has been out of support since November 2024. The `asyncpg` driver would connect to older servers, but that does not make them usable.
 
 **Can I share a PostgreSQL server with other applications?**
 :   Yes. Create a separate database and user for Bambuddy. It won't interfere with other databases on the same server.
