@@ -89,6 +89,8 @@ The first three are **server modes** — Bambuddy runs its own FTP/MQTT servers 
 !!! tip "Server modes with a target printer mirror its live state to the slicer"
     When you set a **target printer** on an Immediate / Review / Print Queue VP, the slicer sees the target's live AMS slots, FTS / dual-extruder routing, k-profiles, nozzle / temperature state, the camera stream, and the progress of whatever it is currently printing — same view a direct slicer connection would get, but with Bambuddy's queue / archive / review workflow on the receiving end, and with the **Send** button still available while the printer is busy. AMS load / dry / calibration commands from the slicer pass through to the real printer too. See [Live target-printer mirror](#live-target-printer-mirror) for setup and the access-code rule (Bambuddy auto-derives the VP's access code from the target so the bridge can authenticate; the field becomes read-only in the card once a target is picked). If you don't set a target, the VP behaves as a pure file receiver with no live data — which is fine if you only need slice-and-archive.
 
+    Deleting the target printer deletes the VP with it.
+
 ---
 
 ## Required Ports

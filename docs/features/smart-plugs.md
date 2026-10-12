@@ -582,6 +582,8 @@ Or from Settings > Smart Plugs:
 
 ### Powers the printer
 
+Deleting a printer deletes the plugs linked to it.
+
 Linking a plug to a printer serves two different purposes, and Bambuddy needs to know which one you mean:
 
 - The plug **feeds the printer** — switching it off really does take the printer down.

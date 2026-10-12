@@ -153,6 +153,8 @@ restore, firmware installs). The ten toggles you can set on a key are:
     The same goes for printers: a key reaches only printers its owner may see
     (see [Printer Access](authentication.md#printer-access)), and a printer it
     can't reach answers `404 Not Found`, as if it didn't exist.
+    A key limited to certain printers loses a printer when it is deleted; a
+    key whose last printer is deleted reaches none.
     Deactivating or deleting a user disables their keys along with their login.
 
     Two consequences worth planning around:

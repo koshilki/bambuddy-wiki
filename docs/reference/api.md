@@ -337,6 +337,8 @@ PATCH /printers/{id}
 DELETE /printers/{id}
 ```
 
+`?delete_archives=false` keeps the printer's archives. What is limited to the printer is deleted with it: notification providers and smart plugs assigned to it, and virtual printers that send to it. API keys limited to it lose it; a key whose last printer goes reaches none.
+
 ### Download Multiple Printer Files
 
 API clients can request a disk-backed ZIP containing files from printer storage:

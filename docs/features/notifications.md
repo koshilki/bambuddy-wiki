@@ -763,6 +763,8 @@ Limit notifications to specific printers:
 
 Only events from selected printers trigger notifications.
 
+Deleting a printer deletes the providers limited to it.
+
 ---
 
 ## :material-email-newsletter: Daily Digest
