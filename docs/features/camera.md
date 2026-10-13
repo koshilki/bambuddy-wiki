@@ -40,6 +40,7 @@ The list shows only printers that have an external camera, so it stays short how
 
 !!! tip "RTSP Authentication"
     Include credentials in the URL: `rtsp://user:password@192.168.1.50:554/stream`
+    Only users who may edit printers see the password; everyone else sees the URL with `[REDACTED]` in its place.
 
 !!! tip "USB Camera Setup"
     For USB cameras, enter the device path (e.g., `/dev/video0`). Bambuddy will auto-detect available V4L2 devices. Install `v4l2-utils` for enhanced device detection: `sudo apt install v4l-utils`
