@@ -35,9 +35,12 @@ Get notified about print events via WhatsApp, Telegram, Discord, Email, Home Ass
 2. Click **Add Provider**
 3. Select provider type
 4. Enter configuration
-5. Click **Send Test** to verify
+5. Click **Test Configuration** to verify
 6. Configure event triggers
 7. Click **Add**
+
+!!! note "Saved tokens, passwords and webhook URLs"
+    Once saved, a provider's secrets (tokens, keys, passwords, webhook URLs) are never shown again: the edit dialog shows `********` instead. Leave it as is to keep the saved value, clear it to remove it, or enter a new one. If you change where a provider sends to (the SMTP server, port or security, or the ntfy, Gotify or Bark server, or the webhook URL), enter its secret again.
 
 ---
 

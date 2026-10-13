@@ -71,6 +71,9 @@ ml_api:
 
 Put the same value in Bambuddy's **ML API Token** field below. Leave both unset if you don't need it.
 
+!!! note "Saved token"
+    Once saved, the token is never shown again: the field shows `********` instead. Leave it as is to keep the saved value, clear it to remove it, or enter a new one. If you change the ML API URL, enter the token again; the settings are not saved until you do, and **Test** uses the saved token only for the saved URL.
+
 !!! warning "The health endpoint is not protected"
     `/hc/` answers `ok` whether or not the token is right — only the detection endpoint is gated. So a `curl` of `/hc/` proves nothing about your token. Bambuddy's **Test** button probes both, and tells you specifically when the token is rejected.
 

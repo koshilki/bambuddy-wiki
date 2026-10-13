@@ -266,6 +266,9 @@ REST plugs let you control any device by sending HTTP requests to custom URLs.
 |-------|-------------|---------|
 | **Custom Headers** | JSON object of headers | `{"Authorization": "Bearer your-token"}` |
 
+!!! note "Saved passwords, headers and tokens"
+    Once saved, a plug's password, its custom headers and the Home Assistant token are never shown again: the field shows `********` instead. Leave it as is to keep the saved value, clear it to remove it, or enter a new one. If you change where they are sent (the plug's IP address, any of its REST URLs, its type, or the Home Assistant URL), enter them again. **Test** uses the saved value only for the saved address.
+
 **Status Monitoring (Optional):**
 
 | Field | Description | Example |

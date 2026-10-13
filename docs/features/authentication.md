@@ -308,6 +308,9 @@ Advanced Authentication adds SMTP-based email integration for streamlined user o
 3. Enable **Advanced Authentication**
 4. Use the **Test Email** button to verify your configuration
 
+!!! note "Saved password"
+    The saved SMTP password is never shown again; leave the field empty to keep it. If you change the host, port or security, enter the password again (without authentication, the saved password is removed instead).
+
 ### How It Works
 
 Once enabled:
@@ -382,7 +385,7 @@ Bambuddy supports LDAP/Active Directory authentication, allowing users to log in
    - **User Search Filter** — LDAP filter to find users. `{username}` is replaced with the login name
      - Active Directory: `(sAMAccountName={username})`
      - OpenLDAP: `(uid={username})`
-3. Click **Save**, then **Test Connection** to verify. If it reports that the server refused StartTLS, the server only offers LDAPS (lldap is one): choose **LDAPS** and use its `ldaps://` URL and port
+3. Click **Save**, then **Test Connection** to verify. The saved bind password is never shown again; leave the field empty to keep it, but enter it again if you change the server URL or security. If it reports that the server refused StartTLS, the server only offers LDAPS (lldap is one): choose **LDAPS** and use its `ldaps://` URL and port
 4. Click **Enable** to activate LDAP authentication
 
 !!! warning "TLS Required"

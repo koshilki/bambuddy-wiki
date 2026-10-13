@@ -18,6 +18,9 @@ Navigate to **Settings → Network → MQTT Publishing** to configure the connec
 | **Topic Prefix** | Prefix for all published topics | `bambuddy` |
 | **Use TLS** | Enable TLS/SSL encryption | Off |
 
+!!! note "Saved password"
+    Once saved, the password is never shown again: the field shows `********` instead. Leave it as is to keep the saved value, clear it to remove it, or enter a new one. If you change the broker, port or TLS setting, enter the password again; the settings are not saved until you do.
+
 !!! tip "Port Auto-Population"
     When you toggle TLS on/off, the port field automatically updates:
 
