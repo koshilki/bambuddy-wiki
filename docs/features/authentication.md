@@ -322,8 +322,8 @@ Once enabled:
 
 Bambuddy includes customizable notification templates for:
 
-- **Welcome Email** — Sent when a new user account is created
-- **Password Reset** — Sent when a password reset is requested (by admin or self-service). It carries the reset link in `{reset_url}`; a template without `{reset_url}` still gets the link added at the end
+- **Welcome Email** — Sent when a new user account is created. Bambuddy adds the login details (username and password) at the end of the text and in a box above the login button; the template cannot place the password itself
+- **Password Reset** — Sent when a password reset is requested (by admin or self-service). Bambuddy adds the reset link at the end of the text and as a button; the template cannot place the link itself
 - **User Print Started Email** — Sent when a user's print job begins
 - **User Print Completed Email** — Sent when a user's print job finishes successfully
 - **User Print Failed Email** — Sent when a user's print job fails
