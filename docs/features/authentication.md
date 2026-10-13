@@ -267,10 +267,10 @@ If [Advanced Auth via Email](#advanced-auth-via-email) is enabled, users can res
 
 1. Click **"Forgot your password?"** on the login page
 2. Enter your username or email address
-3. A new secure random password is emailed to you automatically
-4. Log in with the new password and change it if desired
+3. A link to set a new password is emailed to you (valid for 1 hour, usable once)
+4. Open the link, enter your new password twice, and log in with it
 
-Admins can also trigger a password reset from User Management with a single click — the new password is emailed to the user.
+Admins can also trigger a password reset from User Management with a single click — the user is emailed the same link.
 
 ### Without Advanced Auth
 
@@ -313,8 +313,8 @@ Advanced Authentication adds SMTP-based email integration for streamlined user o
 Once enabled:
 
 - **User creation**: Admins enter a username and email address. The system generates a secure random password and emails it directly to the user. No one else sees the password.
-- **Admin password reset**: In User Management, admins can click a reset button to generate a new password and email it to the user — one click, no manual entry.
-- **Self-service reset**: Users can click "Forgot your password?" on the login screen to receive a new password via email without contacting an admin.
+- **Admin password reset**: In User Management, admins can click a reset button to email the user a link to set a new password — one click, no manual entry.
+- **Self-service reset**: Users can click "Forgot your password?" on the login screen to receive a link to set a new password via email without contacting an admin.
 - **Email validation**: The system validates email addresses since email is the sole mechanism for password delivery.
 - **Case-insensitive login**: Usernames and email addresses are not case-sensitive when logging in.
 
@@ -323,13 +323,13 @@ Once enabled:
 Bambuddy includes customizable notification templates for:
 
 - **Welcome Email** — Sent when a new user account is created
-- **Password Reset** — Sent when a password is reset (by admin or self-service)
+- **Password Reset** — Sent when a password reset is requested (by admin or self-service). It carries the reset link in `{reset_url}`; a template without `{reset_url}` still gets the link added at the end
 - **User Print Started Email** — Sent when a user's print job begins
 - **User Print Completed Email** — Sent when a user's print job finishes successfully
 - **User Print Failed Email** — Sent when a user's print job fails
 - **User Print Stopped Email** — Sent when a user's print job is cancelled
 
-Templates can be edited in **Settings** → **Email** → **Templates**.
+Templates can be edited in **Settings** → **Notifications** → **Message Templates**.
 
 !!! note "These are distinct from the provider-level Print Completed / Failed / Stopped templates"
     The four `User Print … Email` templates are the per-user emails sent **directly to the user who submitted the print** (SMTP only, requires Advanced Auth and the user's opt-in). The provider-level **Print Completed / Failed / Stopped** templates in **Settings → Notifications → Message Templates** are the broadcast events sent through whatever notification providers the admin has configured (ntfy, Pushover, Telegram, Discord, Email, Webhook, Home Assistant). The " Email" suffix on the user templates is how Bambuddy distinguishes the two paths in the Message Templates list (#1792).

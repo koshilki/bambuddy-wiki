@@ -126,6 +126,16 @@ identity, so a reprint of the same file is a new charge, a restart mid-print
 does not produce a second one, and a charge that was deleted by an administrator
 does not come back on the next reprint.
 
+**A print is billed to the user who queued it.** A reprint of someone else's
+archive is charged under the person who sent it, not the archive's owner.
+
+**Deleting a user does not cancel the cost of a print still running.** It is
+charged to its cost center when it ends, including the user's own private center
+(which stays after them), and shows **No user** in the ledger, as do prints that
+never had a user (login turned off). Deleting the user together with their items
+releases the budget their queued prints still held; a print of theirs that is
+still running is kept until it ends, without a user, and billed the same way.
+
 **A charge that fails is loud.** If a charge cannot be written, Bambuddy reports
 it in the interface and through any notification provider subscribed to the
 **Billing charge failed** event, rather than quietly not billing.
