@@ -470,6 +470,12 @@ so closing every viewer and reopening is what puts a new `?fps=` into effect.
     when no viewer is attached - it deliberately refuses while somebody else is
     watching, so that one client cannot cut off another.
 
+    External cameras (RTSP, USB) run one stream per viewer. Pass the same
+    `viewer=<id>` on your stream URL and on the stop call: the stop then ends
+    your own stream, plus any that has sent no picture for 10 seconds, and
+    leaves other viewers' streams running. A stop without `viewer` ends every
+    stream of the printer.
+
 ---
 
 ## :material-connection: Stream Cleanup

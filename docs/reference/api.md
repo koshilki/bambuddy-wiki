@@ -934,6 +934,7 @@ Returns MJPEG stream. Query params:
 |-----------|------|-------------|
 | `fps` | int | Frames per second (1-30) |
 | `token` | string | Camera token, when auth is enabled |
+| `viewer` | string | Optional id of this viewer, repeated on its stop call (see Stop Stream) |
 
 ### Snapshot
 
@@ -946,10 +947,15 @@ Returns single JPEG image. Accepts the same `token` query param.
 ### Stop Stream
 
 ```http
-POST /printers/{id}/camera/stop
+POST /printers/{id}/camera/stop?viewer={viewer}
 ```
 
-Terminates active streams for printer.
+Terminates active streams for printer. The shared stream of a built-in camera
+is left running while any viewer is still attached. For an external camera
+(RTSP, USB), pass the `viewer` id you put on your stream URL (letters, digits,
+`-` and `_`, up to 64): your own streams end, as does any that has sent no
+picture for 10 seconds, and other viewers' streams keep running. Without
+`viewer`, every stream of the printer ends.
 
 ---
 
