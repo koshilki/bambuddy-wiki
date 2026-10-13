@@ -1065,9 +1065,11 @@ new connection starts a fresh 60-second renewal period. The overlay keeps its
 saved URL, token, FPS setting, rotation, and status display during renewal.
 Recovery is disabled in status-only mode (`camera=false`).
 
-Healthy connections are renewed too. A renewal joins the camera stream
-Bambuddy already has open for the printer and shows the latest frame at once,
-so a working picture doesn't flicker. Renewal can't bring back a printer that
+Healthy connections are renewed too. The old connection is closed a moment
+before the new one opens, so the picture blinks briefly; leaving it open would
+pile up one connection per minute in the browser source, and a USB camera
+serves only one reader. A renewal joins the camera stream Bambuddy already has
+open for the printer and shows the latest frame at once. Renewal can't bring back a printer that
 is offline or whose camera has stopped: the overlay picks the picture up again
 once the printer sends frames.
 
@@ -1180,6 +1182,14 @@ Optional URL parameters, if the defaults don't suit the screen:
 ```
 http://your-bambuddy/camwall?token=bblt_…&maxLive=9&interval=10&size=l
 ```
+
+While the page is visible, live tiles reconnect their stream once a minute,
+so a camera that dropped out and came back shows a picture again within a
+minute, with no reload. If the camera stays down, the tile shows **No signal**
+after its reconnect and one retry bring no picture; a printer's built-in camera
+keeps showing its last picture until Bambuddy stops retrying it. A tile showing
+**No signal** stays that way until the page is reloaded or the tile changes
+between live, snapshot and paused.
 
 !!! warning "The URL is the credential"
     Anyone who can read that URL — off the screen, out of the browser history,
