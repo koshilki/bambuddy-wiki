@@ -29,7 +29,7 @@ Automatically back up your K-profiles, cloud profiles, app settings, spool inven
 Bambuddy supports multiple Git providers. Choose one below and follow the setup steps.
 
 !!! danger "Private repositories only"
-    Bambuddy refuses to back up to a public (or GitLab "internal") repository — the saved data includes MQTT credentials, Home Assistant tokens, Prometheus tokens, your Bambu Cloud email, and printer access codes via K-profiles. The save endpoint runs a privacy check on every config change and returns HTTP 400 if the target isn't confirmed private. Scheduled backup runs re-check before each push, so flipping a previously-private repo to public in your provider's UI also aborts the next run with a clear failure log entry. There is no opt-out. If you have an existing public bambuddy-backup repository on GitHub or elsewhere, **delete it now** and create a fresh private one.
+    Bambuddy refuses to back up to a public (or GitLab "internal") repository — the saved data includes your settings, print history, spool inventory, your Bambu Cloud email and your printers' serial numbers. The save endpoint runs a privacy check on every config change and returns HTTP 400 if the target isn't confirmed private. Scheduled backup runs re-check before each push, so flipping a previously-private repo to public in your provider's UI also aborts the next run with a clear failure log entry. There is no opt-out. If you have an existing public bambuddy-backup repository on GitHub or elsewhere, **delete it now** and create a fresh private one.
 
 ### Setup
 
@@ -274,8 +274,12 @@ Leave it **off** to recover something you deleted by accident. Turn it **on** to
 
     **Overwrite existing entries doesn't apply to K-profiles.** Writing a slot on the printer is always a replacement — there is no "add only if missing" for a value the printer already holds — so a K-profile restore updates the matching slot whichever way you set the toggle, replacing the calibration currently on the printer. The restore screen says so beside the category as soon as you tick it, and the result summary repeats it.
 
-!!! note "Credentials are never restored"
-    Tokens, secrets, passwords, access codes, API keys, and passphrases are skipped on restore, the same way they're skipped on backup. Re-enter them by hand if you're rebuilding an instance.
+!!! note "Credentials are never backed up or restored"
+    Tokens, secrets, passwords, access codes, API keys, and passphrases are written to the backup as `********` (or left empty if they were never set), never as the value, and are skipped on restore. A URL setting with a login in it, such as `http://user:password@host`, is left out of the backup. In cloud profiles, a printer preset's connection credentials (the printer's access code or the print host's API key, user and password) are written as `********` too, and a login in any URL in the preset is masked. Re-enter them by hand if you're rebuilding an instance.
+
+    A credential stored on this instance is never sent somewhere the backup names: if the backup would change where it goes (the MQTT broker, port or TLS setting, the SMTP server, port or security mode, the Home Assistant URL, the Obico ML URL or the Manyfold URL), those settings are left as they are and the restore says so. Change them in **Settings** and enter the credential again. A Home Assistant token set through the `HA_TOKEN` environment variable is the exception and follows the URL.
+
+    Backups made by earlier versions did contain these values, and they stay in your backup repository's history. If you used Git backup before, change those passwords and tokens.
 
 !!! note "Authentication settings are never restored either"
     Four settings are refused even with **Overwrite existing entries** on: whether authentication is enabled, **Advanced Authentication**, local login, and whether first-time setup has completed. Restoring those would change *who can reach Bambuddy* rather than how it behaves — a backup taken before you turned authentication on would switch it back off, and the checks that stop you disabling local login without a working OIDC provider don't run on a restore.

@@ -269,6 +269,8 @@ REST plugs let you control any device by sending HTTP requests to custom URLs.
 !!! note "Saved passwords, headers and tokens"
     Once saved, a plug's password, its custom headers and the Home Assistant token are never shown again: the field shows `********` instead. Leave it as is to keep the saved value, clear it to remove it, or enter a new one. If you change where they are sent (the plug's IP address, any of its REST URLs, its type, or the Home Assistant URL), enter them again. **Test** uses the saved value only for the saved address.
 
+    A REST plug's URLs and request bodies often hold the device's credential too, so only users who may edit smart plugs see them. Users who may control plugs still switch them, and anyone who can see plugs still sees their status; the plug list shows **REST** instead of the URL.
+
 **Status Monitoring (Optional):**
 
 | Field | Description | Example |
