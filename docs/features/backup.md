@@ -281,6 +281,11 @@ Leave it **off** to recover something you deleted by accident. Turn it **on** to
 
     Backups made by earlier versions did contain these values, and they stay in your backup repository's history. If you used Git backup before, change those passwords and tokens.
 
+!!! note "Each restored value is checked like an edit in Settings"
+    A restore writes a setting only if **Settings** would accept the same value when you edit it: a Home Assistant, Obico, slicer, Manyfold or Spoolman URL must pass the same address checks, the Docker Compose directory may hold only path characters, and JSON and numeric settings must be well-formed and in range. A value that fails is skipped and named in the result. So is anything that is not a setting you edit here: account sessions for Bambu Cloud and Orca Cloud, the automatic purge schedules for archives and the library trash (set them again under their own pages; they need the purge permission), runtime state, and keys this version does not know. Bambuddy's own internal flags are skipped without a mention. Each user's email sign-in codes are never changed by a restore.
+
+    A restore also never changes where Bambuddy sends things: the **External URL** (password reset and welcome links are built from it), the mail server, the local backup folder, the MQTT broker, and the Home Assistant, Obico, slicer, Spoolman and Manyfold addresses. A value in the backup that differs from this instance's is left as it is here and named in the result, even if nothing is set here yet. On a fresh instance, enter these addresses again in **Settings**.
+
 !!! note "Authentication settings are never restored either"
     Four settings are refused even with **Overwrite existing entries** on: whether authentication is enabled, **Advanced Authentication**, local login, and whether first-time setup has completed. Restoring those would change *who can reach Bambuddy* rather than how it behaves — a backup taken before you turned authentication on would switch it back off, and the checks that stop you disabling local login without a working OIDC provider don't run on a restore.
 
