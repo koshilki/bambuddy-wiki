@@ -722,7 +722,7 @@ When a camera snapshot is available (e.g. First Layer Complete, Print Started, P
 |-------|:-------:|-------------|
 | **Messages from connected apps** | Off | Messages another application sends through Bambuddy, e.g. Bambuddy Orders' "3 orders need you" |
 
-An app sends its message to `POST /api/v1/notifications/app-message`; Bambuddy hands it to every enabled provider with this switch on. It goes through the same path as Bambuddy's own events: quiet hours, the daily digest and the notification log (listed with the event type `app:<API key name>`).
+An app sends its message to `POST /api/v1/notifications/app-message`; Bambuddy hands it to every enabled provider with this switch on. A sender limited to certain printers ([Printer Access](authentication.md#printer-access)) reaches only the providers bound to one of those printers, not the ones set to all printers. It goes through the same path as Bambuddy's own events: quiet hours, the daily digest and the notification log (listed with the event type `app:<API key name>`).
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/notifications/app-message \
@@ -735,7 +735,7 @@ curl -X POST http://localhost:8000/api/v1/notifications/app-message \
 - **Who may send:** an API key with the **Send Notifications** permission ([API Keys](api-keys.md)), whose owner has `notifications:update`; or a signed-in user with `notifications:update`.
 - **What is accepted:** plain text; a title up to 120 characters, a message up to 2,000. The optional `url` must be an `http` or `https` address and is added as the message's last line.
 - **Limit:** 20 messages a minute per key. More are refused with `429`.
-- **Where it arrives:** `GET /api/v1/notifications/app-message/channels` lists the providers that take app messages (names and types only), so an app can tell its user where its messages go.
+- **Where it arrives:** `GET /api/v1/notifications/app-message/channels` lists the providers that take app messages for this sender (names and types only), so an app can tell its user where its messages go.
 
 Enable/disable each event per provider.
 
