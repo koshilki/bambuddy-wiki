@@ -191,9 +191,10 @@ restore, firmware installs). The ten toggles you can set on a key are:
     *every* user's rows within its toggles, not only its owner's.
 
 !!! info "Queueing runs as the owner"
-    A key that adds to the queue (`POST /queue/`, print orders) is checked the
-    way its owner's own session would be. It can queue only archives and
-    library files its owner may read and reprint, and with
+    A key that adds to the queue (`POST /queue/`, `POST /webhook/queue/add`,
+    print orders) is checked the way its owner's own session would be. It can
+    queue only archives and library files its owner may read and reprint, and
+    the key needs **Read Status** for ones its owner did not create. With
     [billing](billing.md#api-keys) on, it can charge only cost centers its
     owner may print with. The queued item belongs to the owner, so it shows up
     in their queue.
@@ -362,7 +363,7 @@ http://your-server:8000/api/v1
 | `/auth/me` | GET | Identify the key: its owner and the scopes it actually carries |
 | `/webhook/printer/{id}/status` | GET | Compact printer status for polling clients (see below) |
 | `/webhook/queue` | GET | Queue status (needs Read Status) |
-| `/webhook/queue/add` | POST | Add a print to the queue (needs Manage Queue) |
+| `/webhook/queue/add` | POST | Add a print to the queue (needs Manage Queue; an archive its owner did not create also needs Read Status, see "Queueing runs as the owner") |
 | `/webhook/printer/{id}/start` | POST | Start the next pending job in this printer's queue, releasing it if it waits for a manual start (needs Control Printer) |
 | `/webhook/printer/{id}/stop` | POST | Stop the current print, printing or paused (needs Control Printer) |
 | `/webhook/printer/{id}/cancel` | POST | Cancel the current print, printing or paused (needs Control Printer) |
