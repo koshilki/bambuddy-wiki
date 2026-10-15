@@ -268,6 +268,8 @@ Click on entries with multi-line content (like stack traces) to expand them.
 
 Generate a support bundle for issue reporting. The bundle contains debug logs and system information to help diagnose problems.
 
+The **Support & Troubleshooting** section (debug logging, support bundle and the log viewer) is shown to users with the **settings:update** permission. The logs cover every printer, so viewers don't get them.
+
 ### Enable Debug Logging
 
 Before generating a support bundle:
