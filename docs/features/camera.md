@@ -42,6 +42,9 @@ The list shows only printers that have an external camera, so it stays short how
     Include credentials in the URL: `rtsp://user:password@192.168.1.50:554/stream`
     Only users who may edit printers see the password; everyone else sees the URL with `[REDACTED]` in its place.
 
+!!! note "Redirects"
+    Bambuddy does not follow an RTSP camera that redirects to another address: the camera test fails and the server log names the address it was sent to (`RTSP camera redirected to ...`). Enter that address as the camera URL instead. MJPEG and snapshot cameras may redirect to another address the camera URL itself would be allowed to use, but never to the Bambuddy host or a cloud metadata address.
+
 !!! tip "USB Camera Setup"
     For USB cameras, enter the device path (e.g., `/dev/video0`). Bambuddy will auto-detect available V4L2 devices. Install `v4l2-utils` for enhanced device detection: `sudo apt install v4l-utils`
 
