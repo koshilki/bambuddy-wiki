@@ -492,9 +492,10 @@ The calculated cost is stored in the usage history record and aggregated to the 
 
 If you update spool prices or add cost data retroactively, use **Recalculate Costs** on the Archives page to update all archive costs based on current filament prices. This recalculates costs using:
 
-1. Spool usage history records (by archive ID)
-2. Legacy usage records (by print name, for older records)
-3. Filament catalog prices (if no usage records exist)
+1. Spool usage history records linked to the archive
+2. Filament catalog prices (if no usage records are linked to the archive)
+
+Usage records without a link to an archive (recorded before 0.2.1, with archiving switched off, or left behind by a deleted archive) are not matched to archives by print name, so an archive without linked usage gets the estimate from the filament price.
 
 ### Default Filament Cost & Currency
 
