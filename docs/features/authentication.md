@@ -107,7 +107,7 @@ Printer access has its own page: **Settings → Authentication → Printer acces
 
 Members of that group then see and control only those printers:
 
-- The printer list and dashboard, camera streams, the queue and batches, archives, projects, statistics, print log, pipeline runs, maintenance, smart plugs, notification providers and their log, spool assignments, scheduled drying, failure detection and firmware leave the other printers out.
+- The printer list and dashboard, camera streams, the queue and batches, archives, projects, statistics, print log, pipeline runs, maintenance, smart plugs, Home Assistant sensors, notification providers and their log, spool assignments, scheduled drying, failure detection and firmware leave the other printers out.
 - Live updates for the other printers don't reach them.
 - Notification providers set to all printers are left out too; a limited user creates providers for their own printers.
 - Opening one of the other printers, or an archive or job from one, by its address answers as if it didn't exist.
