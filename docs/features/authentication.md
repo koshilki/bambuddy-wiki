@@ -41,6 +41,9 @@ Permissions follow a `resource:action` pattern. Categories include:
 - **Users/Groups**: read, create, update, delete
 - And many more...
 
+!!! tip "Printing an Archive Again"
+    Every way of printing an existing archive again needs `archives:reprint_own` (own archives) or `archives:reprint_all` (anyone's): queueing it, adding it to an order, running a slicer pipeline on it, and re-slicing it with the built-in slicer. A user who may see an archive can still download its file, so `archives:read_all` together with `library:upload` lets them upload that file to the library and print it from there. Grant read access with that in mind.
+
 !!! tip "Cloud Profiles Are Per-User"
     When authentication is enabled, each user has their own independent Bambu Cloud login. User A logging into Cloud does not affect User B's session. To use Cloud Profiles, a user needs the `cloud:auth` permission — this single permission covers login, logout, and all cloud profile operations (reading, creating, editing, deleting presets). The `settings:read` permission is NOT required for cloud profiles.
 
