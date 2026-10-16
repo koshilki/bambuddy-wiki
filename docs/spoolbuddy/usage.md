@@ -261,6 +261,11 @@ The panel shows the current state of the tag writing process:
 | **Success** | Green checkmark with success message and spool info | Auto-clears after 5 seconds |
 | **Error** | Red X with error message | **Try Again** |
 
+When the tag was written but could not be linked to the spool, the error says why: Spoolman is not set up, linking in Spoolman failed, or the spool no longer exists. The chip itself holds the data; write it again once the cause is fixed.
+
+!!! note "Spoolman switched on but unavailable"
+    With Spoolman integration enabled and a URL set, SpoolBuddy uses Spoolman's spools only. If Spoolman cannot be reached, a scanned tag is not looked up and the status bar says so for a few seconds. If Bambuddy refuses the URL itself (for example a cloud metadata address), writing a tag and saving a scale weight are refused as well, with "Spoolman is unavailable". SpoolBuddy does not fall back to the built-in inventory, whose spools are a different set. Enabled without a URL counts as the built-in inventory.
+
 On the **Replace Tag** tab, if the selected spool already has a tag, an additional **Untag Selected Spool** button appears to remove the existing tag without writing a new one. A yellow warning explains that the old tag will be unlinked.
 
 ---
