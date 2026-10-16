@@ -424,6 +424,8 @@ Export a complete project bundle including all files from linked library folders
    - `project.json` - Project settings, BOM items, and folder metadata
    - `files/` - All files from linked library folders
 
+The export carries the linked folders and files you can open in the File Manager: everything with **library:read_all**, your own files in the folders you see with **library:read_own**, and no folders or files without library access.
+
 !!! tip "Complete Bundles"
     ZIP export includes the actual 3MF/gcode files from linked folders, making it easy to share complete project bundles.
 
@@ -458,6 +460,8 @@ Import projects from ZIP or JSON files:
 - Creates the project with all settings
 - Creates empty linked folders (names only)
 - Supports single project or batch import (array of projects)
+
+**Existing folders:** a folder of the same name at the top of the library is linked to the imported project only if you have **library:update_all**, the permission that links folders by hand. Otherwise the import creates a new folder of that name.
 
 !!! example "Use Cases"
     - **Share project templates** - Export a project setup for others to use
