@@ -958,7 +958,7 @@ When items are selected, click **Edit Selected** to open the bulk edit modal:
 | **Printer** | Reassign all selected items to a different printer |
 | **Staged** | Toggle manual start (Queue Only) mode |
 | **Auto power off** | Toggle auto power off after print |
-| **Require previous success** | Toggle conditional execution |
+| **Require previous success** | Toggle conditional execution: the job runs only if the last print on its printer succeeded. A job for any printer of a model passes over a printer whose last print failed and takes another; if the last print failed on every free one, it waits, and the queue shows **Resume after failure** for that model |
 | **Inject G-code** | Toggle auto-print G-code injection (only shown when a snippet is configured) |
 | **Bed levelling** | Set bed levelling (Off / Auto / On) |
 | **Flow calibration** | Set flow calibration (Off / Auto / On) |
