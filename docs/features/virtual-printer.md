@@ -1406,6 +1406,12 @@ It is the wrong answer when the type-and-colour match isn't unique. Two spools o
 
 **Why this is opt-in.** Honouring the slicer's mapping means Bambuddy's own matching never runs for that job, and with it `Prefer lowest filament` and the AMS-backup gate. That's the right trade when you want the slicer's pick and the wrong one when you don't, so nothing changes for existing virtual printers until you turn it on.
 
+#### Print Queue mode: print options from the slicer
+
+The print options you pick in the slicer's Send dialog travel with the job: bed levelling, flow calibration, nozzle offset calibration (dual-nozzle printers), vibration calibration, first layer inspection, timelapse and AMS on/off. An option the slicer does not send takes its default from **Settings → Workflow** (AMS stays on).
+
+On an H2C, the slicer's choice of rack nozzle is kept only when the virtual printer has a **target printer**: the nozzle positions name that printer's rack. A virtual printer for any H2C leaves the choice to the dispatch, which picks nozzles from the rack of the printer the job goes to. The same happens when the queue moves a job to another printer.
+
 #### Print Queue mode: Send All on multi-plate projects
 
 Bambu Studio and OrcaSlicer's **Send All** button on a multi-plate project uploads a single 3MF containing every plate &mdash; one FTP transfer, one filename &mdash; with `slice_info.config` inside listing each plate as its own `<plate>` block. From 0.2.5 ([#1733](https://github.com/maziggy/bambuddy/issues/1733)), a Print Queue mode VP enqueues **one queue item per plate** when it receives a multi-plate Send All:
