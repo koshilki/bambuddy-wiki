@@ -172,6 +172,10 @@ Every time you print or reprint an archive, Bambuddy records the event independe
 
 **Why this matters:** a failed reprint at 10 g no longer overwrites a previous successful 100 g print on the same archive — both runs stay visible, and Quick Stats correctly sum to 110 g across the two events.
 
+### Correcting the status by hand
+
+**Edit Archive** can set an archive's outcome to **Completed**, **Failed**, **Aborted** or **Cancelled**; the change lands on the print's most recent run in the Print Log as well. Failed and Aborted count as failures in the statistics. Cancelled counts as stopped and does not lower the success rate. An archive that is still printing, or was uploaded and never printed, shows that status until you pick an outcome; it cannot be set back to printing.
+
 ### Correcting the filament figure by hand
 
 **Edit Archive** has a **Filament used (g)** field. Most prints never need it — the figure comes out of the sliced 3MF — but a print that archived *without* its 3MF has no figure at all, and no way to get one: rescanning reads the 3MF, and that archive has no file to read. Typing the weight in is the only route.
