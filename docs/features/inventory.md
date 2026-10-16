@@ -344,6 +344,12 @@ The hover card shows the assigned spool's material, brand, color, and numeric ID
 
 ![Assigned Spool](../assets/inventory-assigned.png){ .screenshot }
 
+#### Archiving or deleting an assigned spool
+
+Archiving or deleting a spool unassigns it from every AMS slot it was in, so the slot stops showing it and no later print is charged to it. Restoring it does not put it back. With Spoolman, a spool archived while its printer is running a print keeps the slot until that print has finished and its usage is reported, then the slot is released; the same happens to a spool archived or deleted in Spoolman's own interface.
+
+A Bambu Lab spool whose tag is still in the AMS after archiving (an empty core waiting to be swapped) leaves its slot empty: the tag is not given to another spool and no new spool is created from it.
+
 ### Bambu Lab Spools
 
 Slots containing Bambu Lab spools (identified by RFID) do not show assign/unassign buttons. These spools are managed automatically by the AMS.

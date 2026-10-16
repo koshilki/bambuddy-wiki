@@ -97,6 +97,8 @@ With the toggle off:
 - **Auto** - Syncs whenever AMS data changes (recommended)
 - **Manual** - Only syncs when you click the Sync button
 
+**Sync** and **Sync all** unassign a slot that reads empty, except while its printer is printing (a runout reads empty too) and when the AMS reports a spool in it anyway (a spool without filament data, for example).
+
 ### Bulk actions
 
 Spoolman-mode users get the same bulk actions documented in the Inventory page — select multiple spools in the Inventory table to bulk-edit fields, archive / restore, delete, or reset the "Total Consumed" counter in a single call. See [Inventory → Bulk actions](inventory.md#bulk-actions) for the full action set. The bulk-edit endpoint loops your selection through the same per-spool update path, so Spoolman's filament-linking, vendor resolution, and extra-dict behaviour are identical to single-spool edits.
