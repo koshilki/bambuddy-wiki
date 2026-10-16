@@ -624,7 +624,7 @@ Print files from File Manager with full configuration options.
 2. Click the **printer icon** or right-click for context menu
 3. Select **Print**
 4. The print modal opens with:
-   - **Printer selection** - Choose one or more printers
+   - **Printer selection** - Choose one or more printers. The **Default printer** from Settings → General is selected when the dialog opens, if it is active, one you may use, and of the model the file was sliced for; deselect it to pick others.
    - **Plate selection** - For multi-plate 3MF files, select which plate to print
    - **Filament mapping** - Map required filaments to loaded AMS slots
    - **Print options** - Bed levelling, flow calibration, timelapse, etc.

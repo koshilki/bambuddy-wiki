@@ -44,7 +44,7 @@ graph LR
 Bambuddy automatically skips archiving for:
 
 - **Calibration prints** — Internal printer operations like flow rate calibration, vibration compensation, and bed leveling (gcode files under `/usr/` on the printer)
-- **Prints with auto-archive disabled** — Per-printer toggle in printer settings
+- **Prints with auto-archive disabled** — **Settings → General → Archive Settings → Auto-archive prints** switches it off for every printer. While it is on, each printer's own toggle in its printer settings decides. This applies to prints started outside Bambuddy; prints sent from Bambuddy are archived as before
 
 ### Manual Upload via Drag-and-Drop
 
