@@ -275,11 +275,11 @@ Wear Cost = Print duration in hours × Wear cost per printing hour
 If you change your default filament cost, existing archives retain their original calculated costs. To update all archives with current pricing:
 
 1. Click **Recalculate Costs** in the dashboard header
-2. All archive costs are recalculated using current filament prices
-3. Statistics update immediately
+2. Each archive's cost is recalculated at current prices, as the cost of **one print** of it. The share of its grams that spools tracked, over all its prints, is priced at their average price per gram, and the rest at the default filament cost. Without recorded usage, the filament catalog price or the default cost applies.
+3. The archive cards show the new costs. The statistics do not change: they add up the cost each print recorded in the Print Log when it ran.
 
 !!! info "Reprint Costs"
-    When you reprint an archive, the cost is **added** to the existing total. This ensures statistics accurately reflect total filament expenditure across all prints of the same file.
+    The archive card shows what one print of the file costs, and a reprint does not change it. Each print, reprints included, has its own entry in the Print Log with its own cost, and the statistics add those up, so they reflect the total filament expenditure across all prints of the same file.
 
 ---
 

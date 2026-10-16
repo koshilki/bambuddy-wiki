@@ -182,6 +182,8 @@ The correction stays inside Bambuddy. It does not deduct anything from a [Spoolm
 
 The figure counts towards the filament totals on the Projects page and in the metrics, because it lands on the print's most recent run as well as on the card — that run is what the totals are summed from. The exception is a run that measured its own weight through spool tracking: there the measurement stands and only the card changes.
 
+The cost follows the new weight, priced the way **Recalculate Costs** prices it (see [Statistics](statistics.md#recalculate-costs)), on the card and on the run that took the weight. With [Spoolman](spoolman.md) pricing the print, the cost it recorded is scaled to the new weight instead. An API request that sets `cost` along with the weight keeps that cost.
+
 !!! note "An archive that has its 3MF"
     The field is editable there too, but **Rescan** re-reads the sliced figure and overwrites whatever you typed. On those archives the 3MF is the authority.
 
