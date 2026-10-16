@@ -924,6 +924,9 @@ When using built-in inventory, a **Sync Weights from AMS** button appears below 
 
 Use this to recover from corrupted weight data — for example, if a printer power-off event caused all spool fill levels to drop to zero. The sync overwrites the stored `weight_used` values with the current AMS readings. Printers must be online for the sync to work.
 
+- **Locked weights:** a weight you set by hand in the spool form, or measured on the SpoolBuddy scale, is locked, so the automatic AMS sync during normal use does not overwrite it with the coarser AMS percentage. **Sync Weights from AMS** is the explicit override: it updates locked spools as well and releases their lock, for every slot whose printer is online and reports a valid AMS percentage. A spool on an offline printer, or in a slot without a reading, keeps its weight and its lock.
+- **Printing printers:** spools on a printer that is printing (or preparing a print, or still finishing one) are left alone, and the result says how many. Their print's usage is charged when it completes, so a weight synced halfway through would be charged twice. Sync again once the print has finished. The same applies to **Sync Spoolman Weights from AMS**.
+
 !!! warning "Low Resolution"
     AMS remain% is integer-precision (1% steps = ~10g for a 1kg spool). For precise tracking, rely on the automatic 3MF-based usage tracker during normal printing. Use AMS sync only as a recovery tool.
 

@@ -102,7 +102,7 @@ When you place a tagged spool that matches your inventory, the **Spool Info Card
 
 | Button | Action |
 |--------|--------|
-| **Sync Weight** | Saves the current scale reading to the spool record. Shows "Synced!" for 3 seconds on success. |
+| **Sync Weight** | Saves the current scale reading to the spool record and locks its weight, so the automatic AMS remain% sync does not overwrite the measurement (with the built-in inventory). Shows "Synced!" for 3 seconds on success. Prints still deduct their usage from it. |
 | **Assign to AMS** | Opens the AMS assignment modal (see below). |
 | **Close** (X) | Dismisses the card. The same tag won't re-trigger until removed and placed again. |
 
