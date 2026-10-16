@@ -66,6 +66,8 @@ For archives, queue items, and library files, permissions are split into "own" a
 - `queue:update_own` - Edit only queue items you added
 - `library:update_all` - Rename/move any library file
 
+An archive's cost and its filament weight are what later prints of it are charged from, so `archives:update_own` covers them only partly: it can fill in the weight of an archive that was archived without its 3MF and has none, since such an archive cannot be printed again. Any other change to the weight, and setting the cost through the API, needs `archives:update_all`.
+
 **Default Group Assignments:**
 
 | Group | Permissions |

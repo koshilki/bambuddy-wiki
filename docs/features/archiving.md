@@ -184,8 +184,10 @@ The figure counts towards the filament totals on the Projects page and in the me
 
 The cost follows the new weight, priced the way **Recalculate Costs** prices it (see [Statistics](statistics.md#recalculate-costs)), on the card and on the run that took the weight. With [Spoolman](spoolman.md) pricing the print, the cost it recorded is scaled to the new weight instead. An API request that sets `cost` along with the weight keeps that cost.
 
+Later prints of an archive are charged from its cost and weight, so setting either takes `archives:update_all`. With `archives:update_own` you can type a weight in only for an archive that archived without its 3MF and has no weight yet: it cannot be printed again. Everywhere else the field is locked. The cost is then priced only if the archive had none either. See [Authentication](authentication.md#ownership-based-permissions).
+
 !!! note "An archive that has its 3MF"
-    The field is editable there too, but **Rescan** re-reads the sliced figure and overwrites whatever you typed. On those archives the 3MF is the authority.
+    The field is editable there too with `archives:update_all`, but **Rescan** re-reads the sliced figure and overwrites whatever you typed. On those archives the 3MF is the authority.
 
 ### Card Action Buttons
 
