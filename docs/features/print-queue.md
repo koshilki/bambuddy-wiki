@@ -356,9 +356,11 @@ An order is **active** until every target is met and nothing is still in flight,
 
 A grouping (rather than an order) whose every item was cancelled one at a time is marked **cancelled** too. It is finished, but nothing was produced, so calling it completed would be false. This does **not** apply to orders: an order states its intent independently of its runs, so cancelling every run still leaves it owing the work and still offering to queue it again.
 
+A grouping whose jobs ended with failures and printed nothing (all failed, or failed and cancelled) is marked **failed**. It is finished too, and neither completed nor cancelled describes it. Adding a job to it opens it again. Orders are not marked failed: a failed run leaves them owing it, as above.
+
 ### Filtering the list
 
-The Batches tab opens on **Active** and offers **Completed**, **Cancelled** and **All**. Batches with neither queue items nor per-plate targets are never listed &mdash; those are empty shells, left behind when a grouping's items were deleted along with their source archive, and they have nothing to show, track or dispatch. A newly created order *is* listed before its first run is queued, because its targets already say what it owes.
+The Batches tab opens on **Active** and offers **Completed**, **Failed**, **Cancelled** and **All**. Batches with neither queue items nor per-plate targets are never listed &mdash; those are empty shells, left behind when a grouping's items were deleted along with their source archive, and they have nothing to show, track or dispatch. A newly created order *is* listed before its first run is queued, because its targets already say what it owes.
 
 !!! info "Batches created before 1.2.6"
     Existing batches have no per-plate targets and are labelled **Grouping only**. They still show progress and cost, but they have nothing to dispatch &mdash; they only ever knew what was queued, not what was wanted.
@@ -366,7 +368,7 @@ The Batches tab opens on **Active** and offers **Completed**, **Cancelled** and 
 !!! warning "The first start after upgrading closes out old batches"
     `completed` did not exist as a batch status before 1.2.6, so **every batch created since batch grouping shipped is still marked active**, however long ago its last print finished. Left alone, the Batches tab would open on months of accumulated history &mdash; on the development install it was 73 of them, going back four months.
 
-    Bambuddy therefore re-evaluates active batches at every start and closes out the ones that are finished: those whose runs all completed become **completed**, and groupings whose items were all cancelled become **cancelled**. Only batches with nothing queued or printing are considered, so work in flight is never touched. The pass is safe to repeat &mdash; it also catches an order whose last run finished while Bambuddy was stopped.
+    Bambuddy therefore re-evaluates active batches at every start and closes out the ones that are finished: those whose runs all completed become **completed**, groupings whose items were all cancelled become **cancelled**, and groupings that produced nothing but failures become **failed**. Only batches with nothing queued or printing are considered, so work in flight is never touched. The pass is safe to repeat &mdash; it also catches an order whose last run finished while Bambuddy was stopped.
 
 ---
 
