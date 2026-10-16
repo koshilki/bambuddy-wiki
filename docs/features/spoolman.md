@@ -446,6 +446,9 @@ After each print:
 3. Spoolman updates spool quantities and records usage history
 4. For multi-material prints, each filament is tracked separately
 
+!!! warning "Spoolman must be reachable when a print ends"
+    A print's usage is sent to Spoolman once, when the print finishes. If Spoolman cannot be reached at that moment (restarting, offline, network down), that print's usage is not sent later: the Bambuddy log records it as "Not reachable for usage reporting", and the spool's weight has to be corrected in Spoolman by hand. Keep Spoolman running while prints are in progress.
+
 ### Auto-Detect on AMS Change
 
 When AMS filament changes:
