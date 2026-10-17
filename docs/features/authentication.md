@@ -180,7 +180,7 @@ The first user is automatically added to the **Administrators** group.
 
 #### Standard Mode
 
-1. Log in as a user with `users:create` permission
+1. Log in as an administrator
 2. Go to **Settings** → **Users** tab
 3. Click **Add User**
 4. Fill in:
