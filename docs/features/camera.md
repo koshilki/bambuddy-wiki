@@ -86,6 +86,9 @@ When an external camera is enabled, Bambuddy automatically:
 !!! note "ffmpeg Required"
     Layer timelapse requires ffmpeg to be installed (included in Docker image).
 
+!!! note "Long prints and slow hardware"
+    Stitching may take half a second per layer, from 5 minutes up to an hour, so a print with thousands of layers on a Raspberry Pi still gets its video. If ffmpeg fails anyway, or Bambuddy stops while it runs, the frames are not deleted: they stay for about 24 hours in `timelapse_frames/<printer id>/<session>/` under Bambuddy's data folder (`DATA_DIR`, or the install folder when it is not set), and when ffmpeg fails the log names the folder. The folder's `STITCH_FAILED` file holds the ffmpeg command to make the video by hand. Without ffmpeg installed, the frames are deleted as before.
+
 ### Opening the Camera
 
 1. Click the :material-camera: camera icon on any printer card
