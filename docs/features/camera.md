@@ -531,6 +531,8 @@ When a stall is detected:
 
 Bambuddy also watches what the camera sends, not only that it sends something. A built-in (RTSP) camera that keeps sending the same frame for 20 seconds counts as frozen. This happens when the connection to the printer has dropped but `ffmpeg` keeps repeating its last frame. Bambuddy then restarts `ffmpeg` and reconnects to the printer, and open viewers stay connected. The log shows `RTSP output frozen … restarting ffmpeg` when this happens.
 
+An external RTSP camera is watched the same way; its log line reads `External RTSP picture frozen … restarting ffmpeg`. Some external cameras legitimately repeat their picture for longer, such as a slow source or a surveillance camera's smart codec on a static night scene. If the picture after a restart turns out to be a new one, Bambuddy waits three times the longest gap it has seen between changes (up to 5 minutes) before the next check, so such a camera is restarted at most once.
+
 A working camera practically never sends two identical frames, because sensor noise changes every one. In a completely dark chamber the picture can come out identical, though. If the picture after a restart is exactly the same as before, Bambuddy treats it as a still picture and only checks again every 5 minutes, until it changes.
 
 ---
