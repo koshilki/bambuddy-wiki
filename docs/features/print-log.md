@@ -199,7 +199,7 @@ GET /api/v1/print-log/
 | `status` | string | Filter by status (completed, failed, stopped, cancelled, skipped) |
 | `date_from` | datetime | Start of date range |
 | `date_to` | datetime | End of date range |
-| `limit` | integer | Number of entries per page (default 25) |
+| `limit` | integer | Number of entries per page (default 50, max 500) |
 | `offset` | integer | Pagination offset |
 | `sort_by` | string | Column to order by (default `date`). One of `date`, `print_name`, `printer`, `user`, `status`, `duration`, `completed_at`, `filament`, `filament_used`, `cost`, `energy`, `energy_cost`, `wear_cost`. Anything else returns 400 |
 | `sort_dir` | string | `asc` or `desc` (default `desc`). Rows with no value in the sorted column come last either way |

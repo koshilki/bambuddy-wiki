@@ -168,16 +168,18 @@ GET /api/v1/archives/export?format=csv
 |-----------|-------------|
 | `format` | csv or xlsx |
 | `printer_id` | Filter by printer |
-| `status` | Filter by status |
-| `start_date` | Filter start |
-| `end_date` | Filter end |
+| `project_id` | Filter by project |
+| `status` | Filter by status (`completed`, `failed`, `aborted`, `cancelled`, `printing`) |
+| `date_from` | From this date (YYYY-MM-DD) or date and time (ISO) |
+| `date_to` | To this date, inclusive (YYYY-MM-DD), or date and time (ISO) |
 | `search` | Search query |
+| `fields` | Comma-separated columns to include |
 
 ### Example
 
 ```bash
 curl -H "X-API-Key: your-key" \
-  "http://localhost:8000/api/v1/archives/export?format=csv&status=success" \
+  "http://localhost:8000/api/v1/archives/export?format=csv&status=completed" \
   -o archives.csv
 ```
 

@@ -1007,8 +1007,8 @@ GET /api/v1/library/files
 # Get file details
 GET /api/v1/library/files/{id}
 
-# Upload file
-POST /api/v1/library/files/upload
+# Upload file (multipart "file"; optional ?folder_id=)
+POST /api/v1/library/files
 
 # Extract ZIP file
 POST /api/v1/library/files/extract-zip

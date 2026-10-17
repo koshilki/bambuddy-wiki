@@ -122,8 +122,9 @@ GET /printers
     "name": "Workshop X1C",
     "ip_address": "192.168.1.100",
     "serial_number": "01P00A000000001",
-    "model": "X1 Carbon",
-    "status": "idle"
+    "model": "X1C",
+    "location": null,
+    "is_active": true
   }
 ]
 ```
@@ -141,15 +142,13 @@ GET /printers/{id}
   "name": "Workshop X1C",
   "ip_address": "192.168.1.100",
   "serial_number": "01P00A000000001",
-  "model": "X1 Carbon",
-  "status": "printing",
-  "current_print": {
-    "filename": "benchy.3mf",
-    "progress": 45,
-    "remaining_time": 3600
-  }
+  "model": "X1C",
+  "location": null,
+  "is_active": true
 }
 ```
+
+Live state (print progress, temperatures, AMS) comes from `GET /printers/{id}/status`.
 
 ### Get Printer Status
 
@@ -297,8 +296,9 @@ POST /printers/{id}/print-speed?mode=N
 **Errors:**
 
 - `404` - Printer not found
-- `400` - Printer not connected or no active print
+- `400` - Printer not connected
 - `422` - Invalid mode (must be 1-4)
+- `500` - The printer could not be sent the command (its connection is down)
 
 **Permission:** `printers:control`
 
@@ -396,34 +396,34 @@ GET /archives
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | `printer_id` | int | Filter by printer |
-| `status` | string | success, failed, stopped |
-| `start_date` | date | Filter from date |
-| `end_date` | date | Filter to date |
-| `search` | string | Full-text search |
 | `project_id` | int | Filter by project |
+| `date_from` | date | From this day (YYYY-MM-DD) |
+| `date_to` | date | To this day, inclusive (YYYY-MM-DD) |
 | `limit` | int | Max results (default: 50) |
 | `offset` | int | Pagination offset |
 
-**Response:**
+For text search use `GET /archives/search?q=...` (at least 2 characters; also takes `printer_id`, `project_id`, `status`, `limit` and `offset`).
+
+**Response:** a list of archives, newest first.
 ```json
-{
-  "total": 1234,
-  "archives": [
-    {
-      "id": 1,
-      "name": "Benchy",
-      "filename": "benchy.3mf",
-      "printer_id": 1,
-      "printer_name": "Workshop X1C",
-      "created_at": "2024-01-15T14:30:00Z",
-      "duration": 8100,
-      "status": "success",
-      "filament_used": 45.2,
-      "filament_type": "PLA"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "print_name": "Benchy",
+    "filename": "benchy.3mf",
+    "printer_id": 1,
+    "status": "completed",
+    "created_at": "2024-01-15T14:30:00",
+    "started_at": "2024-01-15T12:15:00",
+    "completed_at": "2024-01-15T14:30:00",
+    "print_time_seconds": 8100,
+    "filament_used_grams": 45.2,
+    "filament_type": "PLA"
+  }
+]
 ```
+
+`status` is one of `completed`, `failed`, `aborted`, `cancelled` or `printing`.
 
 ### Get Archive
 
@@ -508,9 +508,9 @@ PATCH /archives/{id}
 **Request:**
 ```json
 {
-  "name": "Updated Name",
+  "print_name": "Updated Name",
   "notes": "Great print",
-  "tags": ["functional", "gift"],
+  "tags": "functional,gift",
   "filament_used_grams": 46.16
 }
 ```
@@ -528,10 +528,10 @@ DELETE /archives/{id}
 ### Download 3MF
 
 ```http
-GET /archives/{id}/3mf
+GET /archives/{id}/download
 ```
 
-Returns the 3MF file as download.
+Returns the 3MF file as a download. Add `?inline=true` to open it instead of saving it.
 
 ### Export Archives
 
@@ -544,7 +544,13 @@ GET /archives/export
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | `format` | string | csv or xlsx |
-| (others) | | Same filters as list |
+| `printer_id` | int | Filter by printer |
+| `project_id` | int | Filter by project |
+| `status` | string | `completed`, `failed`, `aborted`, `cancelled` or `printing` |
+| `date_from` | string | From this date (YYYY-MM-DD) or date and time (ISO) |
+| `date_to` | string | To this date, inclusive (YYYY-MM-DD), or date and time (ISO) |
+| `search` | string | Search query |
+| `fields` | string | Comma-separated columns to include |
 
 ---
 
@@ -637,9 +643,14 @@ POST /queue/reorder
 **Request:**
 ```json
 {
-  "order": [3, 1, 2, 4]
+  "items": [
+    {"id": 3, "position": 1},
+    {"id": 1, "position": 2}
+  ]
 }
 ```
+
+Only pending items move. Positions must be unique.
 
 ### List Batches
 
@@ -1078,17 +1089,20 @@ Uploads accept static PNG and WebP images up to 2 MiB and 4 million pixels. Imag
 GET /system/info
 ```
 
-**Response:**
+**Response** (trimmed):
 ```json
 {
-  "version": "0.1.5b6",
-  "uptime": 86400,
-  "database": {
-    "archives": 1234,
-    "size_mb": 45.6
-  }
+  "app": {"version": "1.2.6b1"},
+  "database": {"engine": "SQLite", "archives": 1234},
+  "printers": {"total": 3, "connected": 2},
+  "storage": {"database_size_bytes": 47815065},
+  "system": {"uptime_seconds": 86400}
 }
 ```
+
+Sections: `app`, `database`, `printers`, `storage`, `system`, `memory`, `cpu`.
+
+**Permission:** `system:read`
 
 ### Health Check
 
@@ -1096,12 +1110,12 @@ GET /system/info
 GET /health
 ```
 
+At the server root, not under `/api/v1`, and without authentication.
+
 **Response:**
 ```json
 {
-  "status": "healthy",
-  "database": "connected",
-  "mqtt": "connected"
+  "status": "healthy"
 }
 ```
 
@@ -1135,19 +1149,16 @@ GET /health
 
 ## :material-speedometer: Rate Limits
 
-| Endpoint Type | Limit |
-|--------------|-------|
-| Read | 100/minute |
-| Write | 30/minute |
-| Control | 10/minute |
+The API has no general request limit and sends no rate-limit headers. A few routes answer `429` when repeated too often:
 
-### Rate Limit Headers
-
-```http
-X-RateLimit-Limit: 100
-X-RateLimit-Remaining: 95
-X-RateLimit-Reset: 1705331400
-```
+| Route | Limit |
+|-------|-------|
+| Login | 10 failed attempts per username and 20 per IP address in 15 minutes |
+| 2FA code | 5 failed attempts in 15 minutes |
+| Email code | 3 sends in 10 minutes |
+| Password reset email | 3 per address and 10 per IP address in 15 minutes |
+| `POST /notifications/app-message` | 20 per minute per API key or user |
+| `POST /connect/token` (connected apps) | 20 failed exchanges per app and per IP address in 15 minutes |
 
 ---
 
@@ -1175,28 +1186,32 @@ Bambuddy can send webhooks for events. Configure in Settings > Notifications.
 
 ### Webhook Payload
 
+The payload is flat: `title`, `message`, `timestamp`, `source`, `event`, and the event's own values as top-level fields.
+
 ```json
 {
+  "title": "Print Completed",
+  "message": "Workshop X1C: benchy\nTime: 2h 15m\nFilament: 15.2g",
+  "timestamp": "2026-04-02T14:30:00.123456",
+  "source": "Bambuddy",
   "event": "print_complete",
-  "timestamp": "2024-01-15T14:30:00Z",
-  "data": {
-    "printer_id": 1,
-    "printer_name": "Workshop X1C",
-    "archive_id": 123,
-    "filename": "benchy.3mf",
-    "duration": 8100,
-    "status": "success"
-  }
+  "app_name": "Bambuddy",
+  "printer": "Workshop X1C",
+  "filename": "benchy",
+  "duration": "2h 15m"
 }
 ```
+
+See [Notifications](../features/notifications.md#webhook-custom) for every field and the Slack format.
 
 ### Event Types
 
 | Event | Trigger |
 |-------|---------|
-| `print_started` | Print begins |
+| `print_start` | Print begins |
 | `print_progress` | Progress milestone |
 | `print_complete` | Print finishes |
 | `print_failed` | Print fails |
+| `print_stopped` | Print is stopped |
 | `printer_offline` | Connection lost |
 | `printer_error` | HMS error |

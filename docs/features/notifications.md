@@ -566,13 +566,14 @@ All webhook payloads use a standardized format with `title`, `message`, `timesta
 
 ```json
 {
-  "title": "Print Complete",
-  "message": "Workshop X1C: benchy.3mf completed in 2h 15m",
+  "title": "Print Completed",
+  "message": "Workshop X1C: benchy\nTime: 2h 15m\nFilament: 15.2g",
   "timestamp": "2026-04-02T14:30:00.123456",
   "source": "Bambuddy",
   "event": "print_complete",
+  "app_name": "Bambuddy",
   "printer": "Workshop X1C",
-  "filename": "benchy.3mf",
+  "filename": "benchy",
   "duration": "2h 15m",
   "filament_grams": "15.2",
   "filament_details": "AMS-A T1 PLA: 15.2g"
@@ -584,12 +585,13 @@ All webhook payloads use a standardized format with `title`, `message`, `timesta
 ```json
 {
   "title": "Print Failed",
-  "message": "Workshop X1C: benchy.3mf failed at 50%",
+  "message": "Workshop X1C: benchy\nTime: 0h 45m\nReason: Filament runout",
   "timestamp": "2026-04-02T15:15:00.123456",
   "source": "Bambuddy",
   "event": "print_failed",
+  "app_name": "Bambuddy",
   "printer": "Workshop X1C",
-  "filename": "benchy.3mf",
+  "filename": "benchy",
   "duration": "0h 45m",
   "filament_grams": "7.6",
   "filament_details": "PLA: 7.6g",
@@ -603,10 +605,11 @@ All webhook payloads use a standardized format with `title`, `message`, `timesta
 ```json
 {
   "title": "Printer Offline",
-  "message": "Workshop X1C is offline",
+  "message": "Workshop X1C has disconnected",
   "timestamp": "2026-04-02T14:30:00.123456",
   "source": "Bambuddy",
   "event": "printer_offline",
+  "app_name": "Bambuddy",
   "printer": "Workshop X1C"
 }
 ```

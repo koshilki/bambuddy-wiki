@@ -486,45 +486,30 @@ Bambuddy can send notifications to external URLs:
 
 ### Payload Format
 
+The payload is flat: `title`, `message`, `timestamp`, `source`, `event`, and the event's own values as top-level fields.
+
 ```json
 {
+  "title": "Print Completed",
+  "message": "Workshop X1C: benchy\nTime: 2h 15m\nFilament: 15.2g",
+  "timestamp": "2026-04-02T14:30:00.123456",
+  "source": "Bambuddy",
   "event": "print_complete",
-  "timestamp": "2024-01-15T14:30:00Z",
-  "data": {
-    "printer": "Workshop X1C",
-    "filename": "benchy.3mf",
-    "duration": 8100,
-    "filament_used": 45.2,
-    "filament_details": "PLA: 30.0g | PETG: 15.2g",
-    "status": "success"
-  }
+  "app_name": "Bambuddy",
+  "printer": "Workshop X1C",
+  "filename": "benchy",
+  "duration": "2h 15m",
+  "filament_grams": "15.2"
 }
 ```
 
-For failed/stopped prints, `filament_used` is scaled by progress and additional fields are included:
-
-```json
-{
-  "event": "print_failed",
-  "timestamp": "2024-01-15T15:15:00Z",
-  "data": {
-    "printer": "Workshop X1C",
-    "filename": "benchy.3mf",
-    "duration": 2700,
-    "filament_used": 7.6,
-    "filament_details": "PLA: 7.6g",
-    "progress": 50,
-    "reason": "Filament runout",
-    "status": "failed"
-  }
-}
-```
+See [Notifications](notifications.md#webhook-custom) for every field, the failed/stopped fields and the Slack format.
 
 ### Events
 
 | Event | Trigger |
 |-------|---------|
-| `print_started` | Print begins |
+| `print_start` | Print begins |
 | `print_progress` | Progress milestone |
 | `print_complete` | Print finishes (includes filament usage) |
 | `print_failed` | Print fails (includes scaled filament usage and progress) |
