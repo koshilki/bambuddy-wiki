@@ -496,6 +496,8 @@ This prevents orphaned ffmpeg processes from consuming resources.
 !!! note "USB (V4L2) camera cleanup"
     External **USB** camera streams are tracked the same way as the built-in RTSP path, so a stream that ends abruptly (browser tab/popup closed, dropped connection) is cleaned up two ways: immediately by the explicit stop call when the viewer closes, and — as a fallback if that's missed — by a background janitor that runs about once a minute and kills any leaked `ffmpeg` still holding `/dev/videoN`. If you ever find a USB camera's LED stuck on after closing the view, reopening the view or waiting for the next janitor pass releases the device; it no longer stays locked indefinitely.
 
+    The janitor only touches Bambuddy's own `ffmpeg`: one Bambuddy started, or one left over from an earlier run and since handed to the system's init process (as Docker and a crashed service leave them). Other software on the same machine that reads a USB camera with `ffmpeg` (motion, a webcam server) is left alone.
+
 ---
 
 ## :material-refresh: Auto-Reconnect
@@ -678,7 +680,7 @@ For developers and integrations:
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/api/v1/printers/{id}/camera/stream` | GET | MJPEG stream |
-| `/api/v1/printers/{id}/camera/snapshot` | GET | Single JPEG frame |
+| `/api/v1/printers/{id}/camera/snapshot` | GET | Single JPEG frame. While someone watches the live view, this is the live view's frame; while the live view is still starting it answers `503` with `Retry-After: 2` rather than taking the camera from the viewer. An external camera with its own snapshot URL is always fetched from that URL |
 | `/api/v1/printers/{id}/camera/stop` | POST | Stop active streams |
 | `/api/v1/printers/{id}/camera/test` | GET | Test camera connection (returns success/failure only) |
 | `/api/v1/printers/{id}/camera/diagnose` | POST | Run staged diagnostic (returns per-stage results and remediation code) |
