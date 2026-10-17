@@ -48,6 +48,9 @@ The list shows only printers that have an external camera, so it stays short how
 !!! tip "USB Camera Setup"
     For USB cameras, enter the device path (e.g., `/dev/video0`). Bambuddy will auto-detect available V4L2 devices. Install `v4l2-utils` for enhanced device detection: `sudo apt install v4l-utils`
 
+!!! note "Several viewers, one connection"
+    Bambuddy opens an external camera once per printer, however many people watch it: the Camera page, Cam Wall tiles, embedded viewers and stream overlays all share that one connection. A USB camera can only be read by one program at a time, so a second viewer used to fail with a blank picture. The connection closes a few seconds after the last viewer leaves; a page reload within that time reuses it. The viewer who opens the connection sets its frame rate for everyone: a Cam Wall tile opens it at 8 frames per second, the Camera page at 15.
+
 !!! tip "Snapshot URL override (go2rtc, IP cameras with `/frame.jpeg`-style endpoints)"
     For **MJPEG**, **RTSP** and **USB** stream types, you can optionally provide a separate **Snapshot URL** below the live-stream URL (hover the info icon next to it for a reminder of what it does). When set, Bambuddy fetches single-frame captures (notification thumbnails, finish photos, timelapse, plate detection) from this URL via plain HTTP GET instead of opening the live stream.
 
