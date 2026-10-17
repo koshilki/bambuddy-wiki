@@ -524,6 +524,8 @@ Automatically dry AMS filament between scheduled prints. When a printer is idle 
 5. Drying runs for the preset **duration** — the printer stops it automatically when the cycle completes
 6. When the next scheduled print is ready to start, any remaining drying is stopped and the print begins
 
+A job for **Any <model>** counts for every printer of that model it could run on (in its location, and only printers its creator may use), so all of them are dried until one takes the job. A job with alternative files for several models counts for the printers of each model. With **Wait for drying to complete** on, no new drying starts on a printer a pending job could take, the same as for a job pinned to one printer.
+
 ### Conservative Temperature Selection
 
 When an AMS unit contains **mixed filament types** (e.g., PLA and PETG in the same unit), the scheduler uses conservative parameters:
@@ -582,7 +584,7 @@ Both consumers go through the same resolver, so they can never disagree on wheth
 | Mode | Behavior |
 |------|----------|
 | **Non-blocking** (default) | Prints take priority. Drying stops when a print is ready to start. |
-| **Blocking** | Queue waits until the drying session finishes before starting the next print. |
+| **Blocking** | Queue waits until the drying session finishes before starting the next print. A job for **Any <model>** goes to another printer of the model that is not drying, and waits only while all of them are. |
 
 !!! tip "Which mode should I use?"
     **Non-blocking** is recommended for most users — it ensures prints start on time while filling idle gaps with drying. Use **blocking** only if filament dryness is critical for print quality (e.g., Nylon, PC) and you don't mind delayed print starts.
