@@ -231,7 +231,7 @@ The modal shows how many items each category holds in the commit you picked, and
 | Category | Restores | Notes |
 |----------|----------|-------|
 | K-profiles | Pressure advance profiles, back onto the printer | Needs `kprofiles:update`; printer must be online |
-| App settings | Application configuration | Needs `settings:update`; credential, authentication and credential-dependent keys are skipped |
+| App settings | Application configuration | Needs `settings:update`; credential, authentication and credential-dependent keys are skipped, and so are the sign-in and mail server settings unless an administrator restores |
 | Spool inventory | Spools plus their usage history | Needs `inventory:update`; matched on tag UID |
 | Print archives | Print history **metadata only** | Needs `archives:update_all`; no gcode, 3MF, or thumbnails |
 

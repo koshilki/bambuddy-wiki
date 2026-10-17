@@ -41,6 +41,17 @@ Permissions follow a `resource:action` pattern. Categories include:
 - **Users/Groups**: read, create, update, delete
 - And many more...
 
+!!! note "Administrators only, whatever a group is granted"
+    Some actions decide who can sign in, so only an administrator can take them, even in a group that holds the matching permission:
+
+    - managing users and groups, and removing a user's 2FA
+    - LDAP (its settings, the connection test, searching the directory and adding LDAP users), SSO providers, and the mail server and its test mail
+    - local sign-in, the session policy, the External URL (password-reset and welcome links point there) and the Prometheus metrics endpoint
+    - restoring or downloading a full backup, choosing the folder local backups are written to, and resetting all settings
+    - connected apps (adding, changing, rotating the secret, removing)
+
+    A group with `settings:update` keeps every other setting. A Git backup restore run by a non-administrator leaves the sign-in and mail server settings as they are.
+
 !!! tip "Printing an Archive Again"
     Every way of printing an existing archive again needs `archives:reprint_own` (own archives) or `archives:reprint_all` (anyone's): queueing it, adding it to an order, running a slicer pipeline on it, and re-slicing it with the built-in slicer. A user who may see an archive can still download its file, so `archives:read_all` together with `library:upload` lets them upload that file to the library and print it from there. Grant read access with that in mind.
 
@@ -1015,7 +1026,7 @@ Administrators can extend the default 24-hour session lifetime under **Settings 
 **Important behaviour:**
 
 - The setting applies to **new logins only**. Already-issued tokens keep their original expiry — lowering the value does not retroactively log existing users out, and raising it does not retroactively extend them.
-- The setting is gated by `settings:update`, which by default is held only by the **Administrators** group.
+- Only an administrator can change it.
 - The **"Remember Me"** checkbox on the login screen still only controls whether the token persists across browser restarts (localStorage vs sessionStorage). The Session Policy controls how long the token itself remains valid.
 - API keys, camera-stream tokens, media tokens, WebSocket tokens, and slicer-download tokens have their own independent lifetimes and are **not** affected by this setting.
 
