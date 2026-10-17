@@ -503,7 +503,15 @@ Each enrolled TOTP user receives 10 backup codes. Any backup code can substitute
 
 ### Admin Reset
 
-An administrator with `users:update` can disable any user's 2FA (TOTP, Email OTP, and backup codes) from **Settings → Users → Edit user**. Disabling also bumps the user's `password_changed_at`, invalidating any JWT issued before the reset.
+When a user has lost access to their authenticator, an administrator can remove their 2FA (authenticator app, email codes and backup codes):
+
+1. Go to **Settings** → **Users** and click **Edit** on the user
+2. Under **Two-factor authentication**, click **Disable 2FA**
+3. Enter **your own** password and click **Confirm**. Administrators who sign in through LDAP or SSO usually have no password and are not asked; if your SSO account was given one, Bambuddy asks for it after the first **Confirm**
+
+The user is signed out everywhere: sessions issued before the reset stop working. They sign in with their password alone and can set 2FA up again. If the user had no 2FA, Bambuddy says so; they are still signed out.
+
+The control is not shown on your own account; use your own 2FA settings there.
 
 ---
 
