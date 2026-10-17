@@ -228,8 +228,9 @@ You can change the default values for print options so that every new print dial
 
 These defaults apply to:
 
-- The **Print** dialog
-- All new queue items
+- The **Print** dialog, as the starting values of its toggles
+- Jobs added without a dialog: File Manager's **Add to queue**, the webhook (`/webhook/queue/add`) and pipeline runs
+- Plates sent to a virtual printer in queue mode, for every option the slicer did not send
 
 !!! tip "Per-Print Override"
     Defaults are just starting values. You can still toggle any option on or off for each individual print before submitting.
@@ -329,7 +330,9 @@ A failed, cancelled or skipped run does not satisfy a target. That is deliberate
 
 An order dispatches everything immediately when you create it, so the default flow is unchanged. When runs are outstanding &mdash; because one failed, or because you raised a target later &mdash; the order shows a **Queue N remaining** button, and each plate row has its own **Queue remaining** for a single plate.
 
-New items are copied from the most recent run of that plate in the same order, so they inherit the printer or model target, AMS mapping, filament overrides and print options you originally chose. They are appended to the end of the relevant printer's queue, never inserted ahead of work already lined up.
+New items are copied from the most recent run of that plate in the same order, so they inherit the printer or model target, AMS mapping, filament overrides, print options and cost centre you originally chose. They are appended to the end of the relevant printer's queue, never inserted ahead of work already lined up.
+
+With [billing](billing.md) on, queueing the remaining runs is checked like adding them by hand: it is refused when you may not print with the cost centre, when the copies have none, or when its budget cannot cover every copy. Nothing is queued in that case.
 
 !!! note "One run has to exist first"
     Because settings are copied from an existing run, a plate with no run to copy from has nothing to dispatch &mdash; either because its target was raised from zero and it has never been queued, or because every run it had was removed from the queue. Bambuddy says so rather than offering an action that cannot work: that plate's row reads **Nothing left to copy settings from** in place of its **Queue remaining** link, the order says how many of the runs it owes are in that state, and the **Queue N remaining** button counts only what can actually be queued. Queue that plate once from the file and the rest dispatches from the order as normal.
@@ -1285,7 +1288,7 @@ Get notified about queue events. Configure these in **Settings → Notifications
 
 | Event | Default | Description |
 |-------|:-------:|-------------|
-| **Job Added** | Off | Job added to queue |
+| **Job Added** | Off | Job added to queue, from any source (print dialog, File Manager, webhook, virtual printer, pipeline run, order dispatch). Several jobs added at once are one message per printer |
 | **Job Assigned** | Off | Model-based job assigned to a printer |
 | **Job Started** | Off | Queue job started printing |
 | **Job Waiting** | On | Job waiting for filament (actionable) |

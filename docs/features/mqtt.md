@@ -55,7 +55,7 @@ All topics are prefixed with your configured topic prefix (default: `bambuddy`).
 
 | Topic | Description | Retained |
 |-------|-------------|----------|
-| `bambuddy/queue/job_added` | Job added to print queue | No |
+| `bambuddy/queue/job_added` | Job added to print queue, from any source; one message per job | No |
 | `bambuddy/queue/job_started` | Queued job started printing | No |
 | `bambuddy/queue/job_completed` | Queued job completed | No |
 

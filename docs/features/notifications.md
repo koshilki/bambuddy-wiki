@@ -705,7 +705,7 @@ When a camera snapshot is available (e.g. First Layer Complete, Print Started, P
 
 | Event | Default | Description |
 |-------|:-------:|-------------|
-| **Job Added** | Off | Job added to queue |
+| **Job Added** | Off | Job added to queue, from any source (print dialog, File Manager, webhook, virtual printer, pipeline run, order dispatch). Several jobs added at once are one message per printer |
 | **Job Assigned** | Off | Model-based job assigned to a printer |
 | **Job Started** | Off | Queue job started printing |
 | **Job Waiting** | **On** | Job waiting for filament (actionable) |
