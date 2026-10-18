@@ -1408,7 +1408,7 @@ It is the wrong answer when the type-and-colour match isn't unique. Two spools o
 
 #### Print Queue mode: print options from the slicer
 
-The print options you pick in the slicer's Send dialog travel with the job: bed levelling, flow calibration, nozzle offset calibration (dual-nozzle printers), vibration calibration, first layer inspection, timelapse and AMS on/off. An option the slicer does not send takes its default from **Settings → Workflow** (AMS stays on).
+The print options you pick in the slicer's Send dialog travel with the job: bed levelling, flow calibration, nozzle offset calibration (dual-nozzle printers), vibration calibration, first layer inspection, timelapse and AMS on/off. An option the slicer does not send takes its default from **Settings → Workflow** (AMS stays on). AMS on/off is kept only when the virtual printer has a **target printer**: the slicer sees the virtual printer, which has no AMS, so for a virtual printer that sends to any printer of a model the AMS stays on and the dispatch settles it against the printer the job goes to.
 
 On an H2C, the slicer's choice of rack nozzle is kept only when the virtual printer has a **target printer**: the nozzle positions name that printer's rack. A virtual printer for any H2C leaves the choice to the dispatch, which picks nozzles from the rack of the printer the job goes to. The same happens when the queue moves a job to another printer.
 
