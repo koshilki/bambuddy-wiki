@@ -82,14 +82,14 @@ Want to control multiple devices together (e.g., printer + enclosure fan)? Use H
 
 | Option | Description |
 |--------|-------------|
-| **Run when printer turns on** | Automatically execute script when the main power plug is switched on |
-| **Run when printer turns off** | Automatically execute script when the main power plug is switched off |
+| **Run when printer turns on** | Automatically execute script when the main power plug is switched on: by hand, by its schedule, and at every print start |
+| **Run when printer turns off** | Automatically execute script when the main power plug is switched off: by hand, by its schedule, by auto-off after a print or drying, or by AI failure detection |
 | **Show on Printer Card** | Display a quick-run button on the printer card |
 
 Scripts appear in a dedicated row on printer cards with "Run" buttons for quick access.
 
 !!! example "Use Case: Enclosure Fan"
-    Create two HA scripts: one to turn on printer + fan, another to turn off both. Link them to your printer with "Run when printer turns on/off" enabled. Now when you control the main plug, both devices respond automatically.
+    Create two HA scripts: one to turn on printer + fan, another to turn off both. Link them to your printer with "Run when printer turns on/off" enabled. Now when the main plug is switched, by you or by Bambuddy, both devices respond automatically. When Bambuddy switches plugs on its own, only a plug that powers the printer counts (an accessory plug such as a lamp runs no scripts), and scripts run once even when two plugs feed the printer. A script plug with **Enabled** off never runs automatically.
 
 !!! note "Script Behavior"
     Scripts can only be triggered ("Run"), not toggled on/off like regular plugs. They execute once when triggered and complete immediately.
