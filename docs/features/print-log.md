@@ -120,7 +120,7 @@ Click the pencil icon to classify the print run -- set or change the **failure c
 | Field | Values |
 |-------|--------|
 | **Status** | Completed, Failed, Stopped, Cancelled, Skipped |
-| **Failure cause** | Adhesion failure, Spaghetti / Detached, Layer shift, Clogged nozzle, Filament runout, Warping, Stringing, Under-extrusion, Power failure, User cancelled, Other |
+| **Failure cause** | Adhesion failure, Spaghetti / Detached, Layer shift, Clogged nozzle, Filament runout, Warping, Stringing, Under-extrusion, Power failure, User cancelled, No status update received, Stopped by the printer kill switch, Other |
 
 The classification you pick here is what the **Failure Analysis** widget groups by, so updates flow into the dashboard charts immediately.
 

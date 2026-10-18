@@ -192,7 +192,8 @@ An install that bills its users can be bypassed by sending a job straight to the
 printer from Bambu Studio or Handy — that print is not queued, not costed and
 not billed. With the kill switch on, Bambuddy stops such a print as soon as it
 sees it, raises an alert in the interface, and sends the configured print-stopped
-notification.
+notification. Its archive is marked cancelled, with the reason **Stopped by the
+printer kill switch**, so it does not count as a failed print.
 
 !!! danger "This stops prints, and a stopped print is not recoverable"
     Enable it only where prints genuinely must not start outside Bambuddy. It

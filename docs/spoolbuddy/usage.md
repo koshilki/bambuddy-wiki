@@ -346,6 +346,9 @@ The Settings page has five tabs across the top.
 - API Token input field (password masked)
 - **Save** button — saves configuration to the device
 - Status message (green on success, red on error)
+- **Restart Daemon** button after a save — the device keeps using its old
+  backend URL and token until the daemon restarts. The button waits until the
+  device has taken the new config, so the restart cannot replace it.
 
 **Diagnostics** — three buttons:
 
