@@ -533,6 +533,31 @@ GET /archives/{id}/download
 
 Returns the 3MF file as a download. Add `?inline=true` to open it instead of saving it.
 
+### Attach a Source 3MF by Name
+
+```http
+POST /archives/upload-source?print_name=Benchy
+```
+
+For slicer post-processing scripts: attaches the project 3MF (the unsliced
+source) to the most recent archive matching the name, replacing a source it
+already had: an exact print name first, then a file name starting with it, then
+a print name containing it. Send the file as multipart `file`; it must be a `.3mf`. Without
+`print_name` the file name is used, with a trailing `_source` dropped
+(`Benchy_source.3mf` → `Benchy`). Only archives on printers you may use are
+matched.
+
+```bash
+curl -H "X-API-Key: your-key" -F "file=@Benchy_source.3mf" \
+  "http://localhost:8000/api/v1/archives/upload-source?print_name=Benchy"
+```
+
+**Response:** `{"status": "uploaded", "archive_id": 123, "archive_name": "Benchy", "source_3mf_path": "...", "filename": "Benchy_source.3mf"}`
+
+**Errors:** `400` not a 3MF · `404` no archive matches the name
+
+**Permission:** `archives:update_all`
+
 ### Export Archives
 
 ```http
