@@ -197,7 +197,10 @@ notification.
 !!! danger "This stops prints, and a stopped print is not recoverable"
     Enable it only where prints genuinely must not start outside Bambuddy. It
     acts on any print it can show did not come from Bambuddy, including one
-    started deliberately by an administrator at the machine.
+    started deliberately by an administrator at the machine. The printer's
+    built-in calibration (started from Bambuddy's **Calibrate** or the printer's
+    screen) is left alone; a calibration print sent from Bambu Studio, such as
+    the pressure-advance line, is a print like any other and is stopped.
 
 It is deliberately cautious about what it can prove. When ownership of a running
 print cannot be established — during the moments after a Bambuddy restart, or
