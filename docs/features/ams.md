@@ -584,7 +584,7 @@ Both consumers go through the same resolver, so they can never disagree on wheth
 | Mode | Behavior |
 |------|----------|
 | **Non-blocking** (default) | Prints take priority. Drying stops when a print is ready to start. |
-| **Blocking** | Queue waits until the drying session finishes before starting the next print. A job for **Any <model>** goes to another printer of the model that is not drying, and waits only while all of them are. |
+| **Blocking** | Queue waits until the drying session finishes before starting the next print. A job for **Any <model>** goes to another printer of the model that is not drying, and waits only while all of them are. A new cycle does not start on a printer with a job that could start now; one whose job is scheduled for later is still dried ahead of it. |
 
 !!! tip "Which mode should I use?"
     **Non-blocking** is recommended for most users — it ensures prints start on time while filling idle gaps with drying. Use **blocking** only if filament dryness is critical for print quality (e.g., Nylon, PC) and you don't mind delayed print starts.

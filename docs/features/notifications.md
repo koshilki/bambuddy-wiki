@@ -767,7 +767,7 @@ Limit notifications to specific printers:
 2. Find **Printers** section
 3. Select specific printers or "All"
 
-Only events from selected printers trigger notifications.
+Only events from selected printers trigger notifications. A job waiting on a printer (for filament, a plate confirmation, the printer itself) reaches that printer's providers. An event that has no printer yet, such as a job added for **Any <model>** or one waiting for any printer of a model, goes to providers set to "All" only; a provider limited to one printer hears of the job once it is assigned to or started on that printer. Events about the whole setup (the queue finishing, stock alerts, messages from connected apps) reach every provider that has them on.
 
 Deleting a printer deletes the providers limited to it.
 
