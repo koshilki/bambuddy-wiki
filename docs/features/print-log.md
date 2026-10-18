@@ -232,7 +232,7 @@ Both fields are optional. To clear an existing classification send `"failure_rea
 
 | Field | Valid values |
 |-------|--------------|
-| `failure_reason` | `""` (clear), `adhesionFailure`, `spaghettiDetached`, `layerShift`, `cloggedNozzle`, `filamentRunout`, `warping`, `stringing`, `underExtrusion`, `powerFailure`, `userCancelled`, `other` |
+| `failure_reason` | `""` (clear), `adhesionFailure`, `spaghettiDetached`, `layerShift`, `cloggedNozzle`, `filamentRunout`, `warping`, `stringing`, `underExtrusion`, `powerFailure`, `userCancelled`, `noStatusUpdate`, `killSwitch`, `other` |
 | `status` | `completed`, `failed`, `stopped`, `cancelled`, `skipped` |
 
 Unknown values return HTTP 400 -- the canonical vocabulary above is enforced server-side.
