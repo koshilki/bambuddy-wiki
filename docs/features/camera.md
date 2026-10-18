@@ -406,6 +406,8 @@ When objects are detected:
 5. Calculates pixel difference percentage
 6. If difference > 1%, plate is considered "not empty"
 
+When the check cannot run (no camera image, an image that cannot be read, an analysis error, or no calibration to compare against), the print is not held, but it is not treated as an empty plate either: users who can control printers get a warning saying why, and the log records it. **Check Plate** in the plate detection modal shows the same reason.
+
 ### Troubleshooting
 
 **False Positives (detects objects when empty)**
