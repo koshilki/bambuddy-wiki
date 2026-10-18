@@ -291,6 +291,8 @@ there is nothing to reload by hand.
 4. Review the selected objects, then click **Skip Selected**
 5. Confirm the action. The selected objects will be marked as skipped and won't be printed
 
+If the printer refuses the skip, the objects are no longer shown as skipped and the log says why. If the printer has not listed them as skipped within a minute, the log records that too.
+
 ### Skip Objects Modal
 
 | Element | Description |
