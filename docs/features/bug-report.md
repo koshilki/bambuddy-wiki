@@ -59,7 +59,7 @@ You can still submit a report regardless.
 
 2. **Describe the issue** — What went wrong? Steps to reproduce?
 3. **Add a screenshot** (optional) — Upload a file, paste from clipboard (Ctrl+V), or drag & drop an image onto the upload area. Images are automatically compressed to JPEG.
-4. **Add your email** (optional) — If provided, your email will be included in a collapsed section of the GitHub issue so the maintainer can follow up.
+4. **Add your email** (optional) — If provided, your email will be included in a collapsed section of the GitHub issue so the maintainer can follow up. Bambuddy itself does not keep it.
 5. Click **Start Debug Logging**
 
 ---

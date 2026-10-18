@@ -856,8 +856,8 @@ AMS data is stored for historical analysis:
 
 ### Configuring Retention
 
-1. Go to **Settings** > **General**
-2. Find **AMS Data Retention**
+1. Go to **Settings** > **Filament**
+2. Find **History Retention** > **Keep sensor history for**
 3. Set number of days (1-365)
 4. Older data is automatically purged
 

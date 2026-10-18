@@ -171,7 +171,7 @@ Bambuddy records nozzle, bed, and chamber readings every 60 seconds (alongside t
 
 #### Retention
 
-Heater data is kept for 30 days by default. Adjust this under **Settings → General → Printer Sensor History Retention** if you need a longer or shorter window. Old rows are purged automatically once every ~24 hours by the recorder loop.
+Heater data is kept for 30 days by default. Adjust this under **Settings → Filament → History Retention → Keep printer temperature history (nozzle, bed, chamber) for** (1-365 days) if you need a longer or shorter window. Old rows are purged automatically once every ~24 hours by the recorder loop.
 
 ### Nozzle Details (H2 Series)
 
