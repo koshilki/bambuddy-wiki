@@ -519,6 +519,10 @@ PATCH /archives/{id}
 
 `status` accepts `completed`, `failed`, `aborted` or `cancelled` (`422` for anything else) and is written to the most recent run as well. `failed` and `aborted` count as failures in the statistics, `cancelled` as stopped.
 
+`cost` accepts 0 to 1000000 (`422` otherwise). A completed most recent run that had the archive's cost (or none) gets the new cost too, so the statistics and project totals agree with the card; a run priced from its own spools, and a failed or cancelled one, keep theirs. **Recalculate costs** (`POST /archives/recalculate-costs`) updates such a run the same way.
+
+While the archive is being reprinted (`status` is `printing`), its most recent run is the previous print's: an edit then changes the archive only, and none of the fields above reach that run.
+
 ### Delete Archive
 
 ```http
