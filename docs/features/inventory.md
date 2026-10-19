@@ -331,7 +331,7 @@ After a bulk action, the toast at the bottom of the screen reflects the actual o
 - **Yellow "N updated, M failed"** — partial success. The toolbar still closes and the selection clears, but the message tells you exactly how many rows the backend rejected. Inspect the listed rows in the inventory to confirm what was changed.
 - **Red "All N … failed — selection kept so you can retry"** — every row failed. The selection and the modal stay open so you can fix the cause (e.g. Spoolman is unreachable, a coworker deleted the rows in another tab) and click Apply again.
 
-The same three-outcome pattern applies to Edit, Delete, Archive, and Restore. Reset usage stays simple — it either zeros every selected spool's counter or surfaces a single error.
+The same three-outcome pattern applies to Edit, Delete, Archive, Restore, and Reset usage.
 
 The bulk actions work identically in Built-in Inventory and Spoolman modes.
 
