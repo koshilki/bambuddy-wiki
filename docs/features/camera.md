@@ -83,6 +83,9 @@ When an external camera is enabled, Bambuddy automatically:
 3. **Stitches video** using ffmpeg when print completes
 4. **Attaches** the timelapse to the print archive
 
+!!! note "With the printer's own timelapse on too"
+    The archive keeps one video, and it is the external camera's: it replaces the printer's video, which usually arrives first, and the printer's file is deleted. A video stitched for a print whose archive is already printing again (the next plate of a shared archive, or a reprint) is not attached to the new print.
+
 !!! note "ffmpeg Required"
     Layer timelapse requires ffmpeg to be installed (included in Docker image).
 

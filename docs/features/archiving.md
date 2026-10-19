@@ -631,6 +631,8 @@ If an archive has no timelapse, the context menu offers **Scan for Timelapse**, 
 
 For archives created before Bambuddy started recording baselines, the scan falls back to matching by name and timestamp — which can come up empty on a printer whose clock has drifted. In that case use **Upload Timelapse** below, or pull the file off the printer's card yourself.
 
+Either way, a video another archive of the same printer already has is never picked by the scan itself. When the scan asks you to choose, such a video is still listed, in case it went to the wrong archive.
+
 ### Manual Timelapse Upload & Remove
 
 If the auto-scan attaches the wrong timelapse or your printer is in LAN-only mode:
