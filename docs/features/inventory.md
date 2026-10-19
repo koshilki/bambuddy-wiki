@@ -444,12 +444,14 @@ Each consumption event is recorded with:
 
 Each spool's `weight_used` counter accumulates over the lifetime of the spool and feeds the **Total Consumed (Since tracking started)** summary card. Two affordances let you zero it out without touching anything else:
 
-- **Per spool** — In the inventory table, an :material-eraser: eraser icon appears in the row's action column on active spools that have consumed grams. Clicking it opens a confirm dialog and resets that spool's `weight_used` to 0.
+- **Per spool** — In the inventory table, an :material-eraser: eraser icon appears in the row's action column on active spools that have consumed grams. Clicking it opens a confirm dialog and sets that spool's counter back to 0.
 - **All spools at once** — On the **Total Consumed** summary card, an :material-eraser: eraser icon next to the label resets every active spool's counter in one go. The confirm dialog tells you how many spools will be affected.
 
-Both actions leave the spool itself untouched: the label weight, remaining weight calculation, AMS lock flag (`weight_locked`), cost-per-kg, and storage location are not changed. Only the accumulated consumption counter goes back to 0. Future prints continue to increment normally — unlike manually editing the *Current Weight* field in the spool form, which auto-locks the spool and stops AMS auto-sync.
+Both actions leave the spool itself untouched: the used weight, label weight, remaining weight calculation, AMS lock flag (`weight_locked`), cost-per-kg, and storage location are not changed. The spool remembers the used weight at the moment of the reset and counts from there. Future prints continue to increment normally — unlike manually editing the *Current Weight* field in the spool form, which auto-locks the spool and stops AMS auto-sync. A Git backup keeps the reset of each built-in inventory spool.
 
-The bulk variant is the recommended way to clean-slate the **Total Consumed** stat (for example, after deleting all archives on a test instance) so subsequent prints track from zero. **Spoolman users get the same actions** — the request routes to Spoolman's PATCH `/spool/{id}` with `used_weight: 0` for each target instead of the built-in inventory table, but the UX is identical.
+If a spool's used weight is later corrected below that point (weighed on the scale, synced from the AMS, edited by hand), the counter stays at 0 until the difference has been used up again.
+
+The bulk variant is the recommended way to clean-slate the **Total Consumed** stat (for example, after deleting all archives on a test instance) so subsequent prints track from zero. **Spoolman users get the same actions** — the reset point is kept in each Spoolman spool's `extra` field, and Spoolman's own used weight is left as it is, so the UX is identical.
 
 ---
 
