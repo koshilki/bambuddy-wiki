@@ -171,24 +171,30 @@ restore, firmware installs). The ten toggles you can set on a key are:
     measured against and are governed by their toggles alone. Recreate them
     when convenient so they gain an owner.
 
-!!! warning "Editing and deleting needs the owner's *all* permission"
-    A key has no identity of its own, so it cannot be "the owner" of a
-    library file, archive or queue item the way a person is. The routes that
-    edit or delete those therefore ask whether the caller may act on
-    **anyone's** rows — `library:delete_all`, `archives:delete_all`,
-    `queue:delete_all` and their `update` counterparts — and the key's owner
-    has to hold that permission.
+!!! info "Reading, editing and deleting acts on the owner's rows"
+    Library files, archives and queue items belong to the user who created
+    them, and a key is treated as its owner. Whether the key reaches
+    **anyone's** rows or only its owner's depends on the owner's permission
+    for that action: `library:read_all`, `archives:update_all`,
+    `queue:delete_all` and the other `_all` permissions reach every user's
+    rows, and their `_own` variants only the owner's.
 
     The built-in **Operators** group holds only the `_own` variants, so a key
-    created by an Operator is refused outright on those routes rather than
-    being narrowed to that person's own files. It reads as
-    `403 API key owner does not have 'library:delete_all' permission`. If an
-    automation needs to prune or rename, create its key under an account in a
-    group that holds the `_all` permissions — **Administrators** does, and a
-    custom group can be granted them through **Settings → Users → Groups**.
+    created by an Operator lists, reads, edits and deletes that person's own
+    files, archives and queue jobs, the same as that person's own session.
+    Another user's row can't be opened (`404 Not Found`) or changed
+    (`403 Forbidden`), and a bulk edit skips it. A row without an owner, such
+    as an upload from before authentication was on, needs an `_all`
+    permission; the one exception, as for the person, is starting a waiting
+    queue job without an owner (a [virtual printer](virtual-printer.md)
+    upload), which makes it the key owner's job. Before Bambuddy 1.2.6 such a
+    key was refused outright with
+    `403 API key owner does not have 'library:delete_all' permission`.
 
-    The flip side is worth planning for: such a key can edit and delete
-    *every* user's rows within its toggles, not only its owner's.
+    A key created by an account with the `_all` permissions, such as an
+    **Administrator**, reaches *every* user's rows within its toggles, not only
+    its owner's, for each action its owner holds the `_all` permission for. So does a key made before keys had owners:
+    it has no owner to act as, and its toggles alone decide.
 
 !!! info "Queueing runs as the owner"
     A key that adds to the queue (`POST /queue/`, `POST /webhook/queue/add`,
