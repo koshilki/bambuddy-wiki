@@ -752,7 +752,7 @@ Suppress notifications during sleep:
 2. Set **Start Time** (e.g., 22:00)
 3. Set **End Time** (e.g., 07:00)
 
-Notifications during quiet hours are silently skipped.
+Notifications during quiet hours are silently skipped. The [daily digest](#daily-digest) is the exception: it goes out at the time you set for it.
 
 Notify! Live Activities that have already started keep updating and end normally
 during quiet hours. New activities wait until quiet hours have ended.
@@ -785,6 +785,8 @@ Batch notifications into a summary:
 - Events are collected (not sent immediately)
 - At digest time, one summary is sent
 - Includes counts and details
+- It goes out at digest time even when that falls inside the provider's [quiet hours](#quiet-hours): you chose that time for it
+- If sending fails, the events are kept and go out with the next day's digest; events more than two days old are dropped, so a provider that keeps failing doesn't pile them up
 
 Notify! Live Activities continue showing live progress independently of digest
 summaries.
