@@ -252,6 +252,9 @@ The modal shows how many items each category holds in the commit you picked, and
 
     An owner the backup cannot name is never *removed*. If overwrite is on and the backup either predates this or names someone this instance does not have, the existing owner is left as it is — a backup that cannot tell you who owns an archive has nothing to say about it. The same applies to archives you have deleted: an older backup will not bring them back.
 
+!!! note "A print that was running when the backup was made"
+    Its archive comes back as **cancelled** with the reason *No status update received*, the way Bambuddy closes a print it lost track of. It is not reported as a failed print, and no notification goes out. If this instance still has that print's archive and **Overwrite existing entries** is on, the archive keeps the status it has here: the print may still be running, or have ended since.
+
 #### Overwrite vs. Skip
 
 The **Overwrite existing entries** toggle decides what happens when something in the backup already exists locally:
