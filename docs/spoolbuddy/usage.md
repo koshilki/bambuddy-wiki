@@ -213,11 +213,14 @@ Three tabs across the top control which spools are shown:
 
 | Tab | Shows | Use Case |
 |-----|-------|----------|
-| **Existing Spool** | Spools without a tag assigned | Writing a tag for a spool already in your inventory |
+| **Existing Spool** | Spools without a tag assigned (a Bambu spool linked by its RFID tag counts as tagged) | Writing a tag for a spool already in your inventory |
 | **New Spool** | A form to create a new spool | Creating a brand-new spool and writing its tag in one step |
 | **Replace Tag** | Spools that already have a tag | Re-writing or replacing a damaged/lost tag |
 
 Switching tabs clears the current selection and any write status.
+
+!!! note "Bambu spools in Spoolman"
+    With Spoolman before 0.27, a Bambu spool that was created from the AMS is linked by its RFID tag in the spool's tag field. Writing a sticker would replace that link, and the next AMS sync would create a duplicate spool, so Bambuddy refuses the write for such a spool. Spoolman 0.27 and later keeps the RFID tag on its own, and the sticker is written as usual.
 
 ### Existing Spool / Replace Tag
 
