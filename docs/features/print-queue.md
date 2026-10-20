@@ -1350,14 +1350,6 @@ POST /api/v1/queue
 # e.g. ?status=pending,printing
 GET /api/v1/queue
 
-# History (completed / failed / skipped / cancelled), one page at a time:
-# ?printer_id=&status=&location=&sort_by=date|name|printer&reverse=&limit=&offset=
-# Returns {items, total, locations}
-GET /api/v1/queue/history
-
-# Remove the history matching printer_id / status / location
-POST /api/v1/queue/history/clear
-
 # Remove from queue. Responds with `deleted`: false when the item was cancelled
 # instead, because it is the last run its order could re-queue that plate from
 DELETE /api/v1/queue/{id}

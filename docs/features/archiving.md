@@ -178,7 +178,7 @@ Every time you print or reprint an archive, Bambuddy records the event independe
 
 ### Correcting the filament figure by hand
 
-**Edit Archive** has a **Filament used (g)** field. Most prints never need it — the figure comes out of the sliced 3MF — but a print that archived *without* its 3MF has no figure at all, and no way to get one: rescanning reads the 3MF, and that archive has no file to read. Typing the weight in is the only route.
+**Edit Archive** has a **Filament used (g)** field. Most prints never need it — the figure comes out of the sliced 3MF — but a print that archived *without* its 3MF has no figure at all, and no way to get one: the figure is read from the 3MF, and that archive has no file to read. Typing the weight in is the only route.
 
 Where to find the real number: the 3MF the printer kept — `slice_info.config` carries `weight` per filament — or the slicer's own estimate for that plate.
 
@@ -191,7 +191,7 @@ The cost follows the new weight, priced the way **Recalculate Costs** prices it 
 Later prints of an archive are charged from its cost and weight, so setting either takes `archives:update_all`. With `archives:update_own` you can type a weight in only for an archive that archived without its 3MF and has no weight yet: it cannot be printed again. Everywhere else the field is locked. The cost is then priced only if the archive had none either. See [Authentication](authentication.md#ownership-based-permissions).
 
 !!! note "An archive that has its 3MF"
-    The field is editable there too with `archives:update_all`, but **Rescan** re-reads the sliced figure and overwrites whatever you typed. On those archives the 3MF is the authority.
+    The field is editable there too with `archives:update_all`, but on those archives the 3MF stays the authority: when the archive records which plate was printed, a later print of it takes its weight from that plate in the 3MF, not from what you typed, and its cost is scaled to that weight.
 
 ### Card Action Buttons
 

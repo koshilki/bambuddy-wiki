@@ -20,7 +20,6 @@ Projects let you:
 - **Set targets** - Define how many items needed
 - **Track quantities** - Count items per print for batch printing
 - **Bill of materials** - Track sourced parts (screws, electronics)
-- **File attachments** - Store documentation and references
 - **Cost tracking** - Budget and expense tracking
 - **Color code** - Visual identification
 - **Add notes** - Document the project
@@ -507,30 +506,6 @@ Track non-printed parts needed for your project (screws, electronics, hardware):
 - Check the box when a part is acquired
 - Progress bar shows acquired/total items
 - Use **Hide done** to focus on remaining items
-
----
-
-## :material-paperclip: File Attachments
-
-Attach reference files to your project:
-
-### Supported File Types
-
-| Category | Extensions |
-|----------|------------|
-| **Images** | JPG, PNG, GIF, WebP, SVG |
-| **Documents** | PDF, DOC, DOCX, TXT, MD |
-| **3D Files** | STL, OBJ, 3MF, STEP, F3D, SCAD |
-| **Archives** | ZIP, RAR, 7Z, TAR, GZ |
-| **Scripts/Configs** | PY, SH, CFG, GCODE, INI |
-| **Data** | JSON, XML, YAML |
-
-### Uploading Files
-
-1. Open a project
-2. Scroll to **Attachments**
-3. Click **Upload** or drag and drop
-4. Files are stored with the project
 
 ---
 

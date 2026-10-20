@@ -336,22 +336,21 @@ Get system info via API:
 GET /api/v1/system/info
 ```
 
-Response includes:
+Response (trimmed):
 
 ```json
 {
-  "version": "0.1.5b6",
-  "uptime": 86400,
-  "database": {
-    "archives": 1234,
-    "size_mb": 45.6
-  },
-  "resources": {
-    "memory_mb": 256,
-    "disk_free_gb": 100
-  }
+  "app": {"version": "1.2.6b1"},
+  "database": {"engine": "SQLite", "archives": 1234},
+  "printers": {"total": 3, "connected": 2},
+  "storage": {"database_size_bytes": 47815065, "disk_free_bytes": 107374182400},
+  "system": {"uptime_seconds": 86400},
+  "memory": {"used_bytes": 268435456, "percent_used": 41.5},
+  "cpu": {"count": 4, "percent": 12.0}
 }
 ```
+
+Sections: `app`, `database`, `printers`, `storage`, `system`, `memory`, `cpu`. Sizes are in bytes, each with a `_formatted` twin (`"45.6 MB"`). Needs `system:read`.
 
 ---
 
