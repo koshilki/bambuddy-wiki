@@ -574,9 +574,10 @@ divided by the filament's **`Weight`**.
     as it is.
 
 !!! note "Reprints"
-    The archive keeps the **first** run's cost, so a short failed reprint does
-    not overwrite the figure from a successful one. Per-run costs are recorded
-    separately in the print log.
+    The archive keeps the cost of one full print: the **first** run's, if it
+    completed, else the estimate it carried when that run started. A short failed run, first
+    or later, does not overwrite it. Per-run costs, partial ones included, are
+    recorded separately in the print log.
 
     Recalculating costs (Archives → Recalculate Costs) does not overwrite a cost
     that came from Spoolman: the spool-to-slot resolution only exists while the
