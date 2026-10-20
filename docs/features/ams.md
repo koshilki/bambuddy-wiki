@@ -171,6 +171,10 @@ When you open the Configure AMS Slot modal for a slot that already has a configu
 !!! tip "Quick Adjustments"
     Pre-population makes it easy to tweak a single setting (for example, updating just the color or K-profile) without re-selecting every field from scratch.
 
+#### Reset Slot
+
+**Reset Slot** at the bottom left of the dialog clears the slot's filament setting on the printer and the preset Bambuddy stored for it. It asks first, and it is not available while a print is running, paused or starting, since the print may be feeding from that slot.
+
 ### Multi-AMS Support
 
 Bambuddy supports multiple AMS units per printer:

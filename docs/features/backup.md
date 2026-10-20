@@ -196,6 +196,8 @@ View backup history in the **Backup History** section:
 - Files changed
 - Commit SHA (linked to GitHub)
 
+**Clear** removes every entry from the history after a confirmation. The backups in the repository are not touched.
+
 !!! tip "Skip Unchanged"
     Bambuddy only creates a commit when data has actually changed, avoiding unnecessary commits.
 

@@ -262,20 +262,16 @@ For spools already linked to Spoolman:
 
 ### Manual Linking
 
-Link existing Spoolman spools to your AMS:
+To put an existing Spoolman spool in an AMS slot from the printer card, hover over the slot and click **Assign Spool**. That assigns the spool to the slot; it does not write the spool's tag into Spoolman.
 
-1. **Hover** over any AMS slot with a Bambu Lab spool that's not yet linked
-2. Click **Link to Spoolman** button
-3. Select from list of unlinked Spoolman spools
-4. Click **Link** to confirm
+To link the spool's RFID tag itself (so the spool is recognised by its tag wherever it is loaded), use SpoolBuddy's [AMS page](../spoolbuddy/usage.md):
+
+1. Tap the slot with the Bambu Lab spool that is not yet linked
+2. Tap **Assign Spool** (*Link a Spoolman spool to this slot*)
+3. Pick the Spoolman spool from the list of spools without a tag
 
 !!! info "When to use Link"
     Use this when you already have spools in Spoolman (e.g., from manual entry) and want to connect them to physical spools in your AMS. New Bambu Lab spools are auto-created on sync - no linking needed.
-
-!!! note "Button States"
-    - **Open in Spoolman** - Shows when spool is already linked (tag found in Spoolman)
-    - **Link to Spoolman** (enabled) - Shows when spool is not linked and there are unlinked spools available
-    - **Link to Spoolman** (disabled) - Shows when spool is not linked but no unlinked spools are available in Spoolman
 
 ### Spool UUID
 

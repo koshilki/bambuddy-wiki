@@ -189,7 +189,7 @@ Tap any slot to open the action picker. It shows the current slot contents and o
 |--------|------|-------------|
 | **Configure** | Settings (blue) | Set the filament preset, K-profile, and color for this slot. |
 | **Assign** / **Unassign** | Package (green) / Unlink (amber) | Track an inventory spool in this slot, or remove the current assignment. |
-| **Link** / **Unlink** | Link (green) / Unlink (amber) | Link a Spoolman spool to this slot. Only appears when Spoolman integration is enabled. |
+| **Assign Spool** / **Unassign** (Spoolman link) | Link (green) / Unlink (amber) | Link a Spoolman spool to this slot by its tag, or remove that link. Labelled *Link a Spoolman spool to this slot* / *Remove Spoolman link from this slot*. Only appears when Spoolman integration is enabled. |
 
 Each action opens its own configuration modal.
 

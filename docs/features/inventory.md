@@ -711,6 +711,8 @@ In the **List** view the user can set a row item as Purchased. Once set as Purch
 !!! tip "Add Purcahses To Stock"
     All items marked as Received will be automatically added to Inventory in the Stock category.
 
+**Clear all** empties the whole list after a confirmation.
+
 ![Shopping cart](../assets/forecast_cart.png){ .screenshot }
 
 In the **Logistics** view a graph shows predicted stock variations based on reorder quantity and data.
