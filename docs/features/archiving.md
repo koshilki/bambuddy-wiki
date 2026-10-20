@@ -826,7 +826,7 @@ Your archive can grow forever. For admins who don't want to babysit disk usage, 
 
 ### Enabling Auto-Purge
 
-Navigate to **Settings → General → Archive Settings**. Below the familiar toggles (auto-archive, save thumbnails, capture finish photo) there's an **Auto-purge old archives** section.
+Navigate to **Settings → General → Archive Settings**. Below the familiar toggles (auto-archive, capture finish photo) there's an **Auto-purge old archives** section.
 
 1. Flip the toggle on.
 2. Set the age threshold (minimum 7 days, maximum 10 years, default 365).
