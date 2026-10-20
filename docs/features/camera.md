@@ -314,6 +314,8 @@ The light then turns on:
 
 It turns off again 15 seconds after the last use, so a viewer that reconnects or the camera wall's refresh doesn't make it flash.
 
+The [plate check](#build-plate-empty-detection) at print start lights the chamber on every printer, whatever this setting says, because detection needs a lit plate, and switches it back off afterwards. On a printer this setting covers, it shares the light with the uses above: a live view opened during the check keeps it on.
+
 **Wait before snapshot** gives the light, and any room light Home Assistant syncs to it, time to come on before an automatic picture is taken. It only applies when the light was off; the live view never waits.
 
 !!! note "Bambuddy only turns off a light it turned on"
