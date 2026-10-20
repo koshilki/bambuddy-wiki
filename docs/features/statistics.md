@@ -194,11 +194,17 @@ Your layout preferences are:
 
 | Range | Description |
 |-------|-------------|
+| Today | Since midnight |
+| This week | Since Monday |
+| This month | Since the 1st |
 | Last 7 days | Past week |
 | Last 30 days | Past month |
 | Last 90 days | Past quarter |
+| This year | Since 1 January |
 | All time | Everything |
 | Custom | Pick start and end dates |
+
+Days are calendar days in your browser's time zone, not UTC: "Today" at 01:30 is today, from midnight, also when Bambuddy runs in another zone.
 
 ### Per-User Filtering
 

@@ -399,6 +399,7 @@ GET /archives
 | `project_id` | int | Filter by project |
 | `date_from` | date | From this day (YYYY-MM-DD) |
 | `date_to` | date | To this day, inclusive (YYYY-MM-DD) |
+| `tz` | string | IANA time zone the dates are calendar days in (e.g. `Europe/Berlin`); Bambuddy's own `TZ` when omitted or not a zone |
 | `limit` | int | Max results (default: 50) |
 | `offset` | int | Pagination offset |
 
@@ -578,6 +579,7 @@ GET /archives/export
 | `status` | string | `completed`, `failed`, `aborted`, `cancelled` or `printing` |
 | `date_from` | string | From this date (YYYY-MM-DD) or date and time (ISO) |
 | `date_to` | string | To this date, inclusive (YYYY-MM-DD), or date and time (ISO) |
+| `tz` | string | IANA time zone a plain date is a calendar day in; Bambuddy's own `TZ` when omitted or not a zone. A date and time without an offset is UTC |
 | `search` | string | Search query |
 | `fields` | string | Comma-separated columns to include |
 
@@ -922,6 +924,7 @@ GET /archives/stats
 |-----------|------|-------------|
 | `date_from` | date | Period start, `YYYY-MM-DD` (inclusive) |
 | `date_to` | date | Period end, `YYYY-MM-DD` (inclusive) |
+| `tz` | string | IANA time zone the dates are calendar days in (e.g. `Europe/Berlin`); Bambuddy's own `TZ` when omitted or not a zone |
 | `created_by_id` | int | Only prints by this user (`-1`: prints with no user) |
 
 **Response (excerpt):**

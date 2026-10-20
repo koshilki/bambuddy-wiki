@@ -172,6 +172,7 @@ GET /api/v1/archives/export?format=csv
 | `status` | Filter by status (`completed`, `failed`, `aborted`, `cancelled`, `printing`) |
 | `date_from` | From this date (YYYY-MM-DD) or date and time (ISO) |
 | `date_to` | To this date, inclusive (YYYY-MM-DD), or date and time (ISO) |
+| `tz` | IANA time zone a plain date is a calendar day in; Bambuddy's own `TZ` when omitted or not a zone. A date and time without an offset is UTC |
 | `search` | Search query |
 | `fields` | Comma-separated columns to include |
 
