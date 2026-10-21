@@ -32,7 +32,7 @@ Connect external network cameras to replace the built-in printer camera. Useful 
 
 1. Go to **Settings** > **Camera**
 2. Under **External Cameras**, click **Add external camera**, then search for the printer by name or location and pick it. Its camera fields open
-3. Enter the camera URL
+3. Enter the camera URL. For a USB camera, pick the device from the list instead (see **USB Camera Setup** below)
 4. Select the camera type, and the rotation if the camera is mounted turned
 5. Click **Test** to verify connection
 
@@ -46,7 +46,20 @@ The list shows only printers that have an external camera, so it stays short how
     Bambuddy does not follow an RTSP camera that redirects to another address: the camera test fails and the server log names the address it was sent to (`RTSP camera redirected to ...`). Enter that address as the camera URL instead. MJPEG and snapshot cameras may redirect to another address the camera URL itself would be allowed to use, but never to the Bambuddy host or a cloud metadata address.
 
 !!! tip "USB Camera Setup"
-    For USB cameras, enter the device path (e.g., `/dev/video0`). Bambuddy will auto-detect available V4L2 devices. Install `v4l2-utils` for enhanced device detection: `sudo apt install v4l-utils`
+    With the camera type set to **USB Camera (V4L2)**, the **USB device** list shows the video devices the Bambuddy server can see, such as `HD Pro Webcam C920 (/dev/video0)`; pick the camera from it. Click the refresh button next to the list after plugging a camera in. A saved camera that is unplugged stays selected and shows as `/dev/video0 (not found)`.
+
+    Device names come from `v4l2-ctl`; without it the list shows `video0` and so on. Install it with `sudo apt install v4l-utils`.
+
+    **Enter path manually** switches to a text field for the device path (e.g. `/dev/video0`); **Choose a detected device** goes back to the list. Bambuddy streams from `/dev/video0` to `/dev/video99` only.
+
+    In Docker, the container sees only the devices passed to it. If the list says no video devices are visible, add the camera to your `docker-compose.yml` and recreate the container:
+
+    ```yaml
+    services:
+      bambuddy:
+        devices:
+          - /dev/video0:/dev/video0
+    ```
 
 !!! note "Several viewers, one connection"
     Bambuddy opens an external camera once per printer, however many people watch it: the Camera page, Cam Wall tiles, embedded viewers and stream overlays all share that one connection. A USB camera can only be read by one program at a time, so a second viewer used to fail with a blank picture. The connection closes a few seconds after the last viewer leaves; a page reload within that time reuses it. The viewer who opens the connection sets its frame rate for everyone: a Cam Wall tile opens it at 8 frames per second, the Camera page at 15.
@@ -263,18 +276,16 @@ Edit timelapse videos directly in Bambuddy before downloading or sharing.
 |---------|-------------|
 | **Trim** | Set start and end points to remove unwanted footage |
 | **Speed** | Adjust playback speed from 0.25x to 4x |
-| **Music** | Add background music from built-in tracks |
-| **Preview** | Watch your edits before exporting |
+| **Music** | Add your own audio file (MP3, WAV, M4A, AAC, OGG) with a volume slider |
+| **Preview** | Watch your edits before saving |
 
-### Exporting
+### Saving
 
 1. Make your edits
-2. Click **Export**
-3. Wait for processing (uses ffmpeg)
-4. Download the edited video
+2. Click **Save**: the edited video replaces the original timelapse
+3. The **Save** button shows the progress; **Cancel** next to it stops processing and keeps the original
 
-!!! tip "Original Preserved"
-    Editing creates a new file - your original timelapse is never modified.
+Processing runs on the server with FFmpeg and carries on if you close the editor. See [Timelapse Editor](archiving.md#timelapse-editor) for details.
 
 ---
 

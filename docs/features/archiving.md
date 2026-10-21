@@ -620,10 +620,9 @@ The printer only writes the video once the print has finished, and a long print 
 
 ### Saving Changes
 
-Click **Save** to process the video. The original timelapse will be replaced with the edited version.
+Click **Save** to process the video. The original timelapse will be replaced with the edited version. The music is mixed in at the volume set with the slider; muted, the music track is silent.
 
-!!! note "Processing Time"
-    Video processing uses FFmpeg on the server. Longer videos may take a few moments to process.
+Processing runs on the server with FFmpeg and can take a few minutes for a long timelapse. While it runs, the **Save** button shows how far it has got, and **Cancel** next to it stops it and keeps the original. You can close the editor meanwhile: processing carries on, and when you open the editor again it shows the progress. Only one edit of a timelapse runs at a time, so **Save** is unavailable until the running one has ended. If the timelapse is removed or replaced while an edit runs, the edit is dropped rather than saved over it.
 
 ### Scan for Timelapse
 
