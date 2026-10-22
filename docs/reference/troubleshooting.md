@@ -370,6 +370,24 @@ All the routes below need a card or stick in the printer. On X1 and P1 series, w
 
 ---
 
+### "Print Again" From the Printer's Screen { #print-again-from-the-printer }
+
+**Symptoms:** A print archived in full the first time. Started again with **Print again** on the printer's screen, the new run's archive has a name and timing but no thumbnail, filament or 3MF. The log shows `Could not find 3MF file for print`, often after `Skipping the 3MF lookup for printer 1: internal_history`.
+
+**Background:**
+
+On a reprint from its screen, the printer does not say which file on the card it is printing. It reports its own internal copy under a generic name (`file:///userdata/project_file.gcode.3mf`), which FTPS cannot serve. It also reports the model's title from inside the 3MF and the plate (`plate_3.gcode`). When the title differs from the file name on the card, nothing Bambuddy can build from those names finds the file.
+
+Bambuddy recognises the reprint instead. It looks for an earlier run of the same job on the same printer that was archived with its 3MF: same title, same plate, and the same layer count when the printer has already reported one. The earlier run must have been sent from the slicer or started on the printer. If one is found, the new run's archive uses that 3MF, and the log says so:
+
+```
+No 3MF on printer 1 for <title> (/data/Metadata/plate_3.gcode); using the 3MF of archive 14, an earlier run of the same job
+```
+
+Without such an earlier archive, the new run gets the name-and-timing archive as before. The printer gives no other way to tell which file it is printing.
+
+---
+
 ### Archive Card Is Empty After a Slow Transfer { #ftp-transfer-timed-out }
 
 **Symptoms:** The archive holds a name and timing but no thumbnail and no slicer data, on a printer whose other prints archive fine. It happens on big files, on prints started while the printer was busy, or on a worn SD card. The log says the download timed out rather than that the file was missing:
