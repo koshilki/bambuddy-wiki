@@ -973,6 +973,9 @@ Pre-defined color palettes from filament brands. Ships with 600+ colors across 2
 
     A slot with a spool assigned from your inventory is named after that spool instead: it is the roll you told Bambuddy is in there, so its own color name is the better answer than any lookup by hex.
 
+!!! info "A color picked on the printer's screen"
+    A slot whose color was set on the printer's touchscreen, without an RFID tag, reports a hex a step or two off the catalog's, for example `#5A657B` where the catalog has **Blue Grey** at `#5B6579`. When no entry has exactly that hex, the slot is named after the closest **Bambu Lab** color, as long as it is close enough to be the same color. Only colors of the slot's own range are considered for this: the range comes from the slot's material or, without a tag, from the filament preset picked on the printer's screen. A filament outside Bambu's ranges is compared with all of them. A hex with no Bambu Lab color that close keeps a general name such as **Blue** or **Light Gray**. This applies to the printer cards, the print dialog and the queue; spool names in the inventory are unchanged.
+
 !!! info "When the spool has no name of its own"
     Most Bambu RFID tags carry no readable color name — some carry an internal code like `A06-D0` instead, which is not unique across material families and is not shown. Spoolman has no color-name field at all, so a Spoolman-backed spool arrives carrying its sub-type in place of one. In both cases the catalog answer for the spool's hex is what you see, which is why a spool whose Color Name field is blank still reads **Candy Red** rather than blank or "Silk+". A name you typed yourself always wins over the catalog; the lookup is the fallback, not an override.
 
