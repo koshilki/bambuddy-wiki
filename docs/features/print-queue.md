@@ -52,6 +52,9 @@ Since 1.2.6 ([#3132](https://github.com/maziggy/bambuddy/issues/3132)) each queu
 !!! warning "Emptied slots"
     If a mapped slot has been emptied since the job was queued, the row says so in yellow, for example `A3 · Empty · Caramel`: the job will still be sent to that slot, so load a spool or edit the mapping. It uses the same check as the Printers page, so a slot shown there as `?` (typically a spool without an RFID tag) is not reported as empty. The external spool is never reported as empty, because the printer doesn't say whether one is loaded.
 
+!!! info "Printed in another colour"
+    When a job is sent with a spool of a different colour than the file asks for in a slot, its row says so in amber, for example `Slot 1 printed in Black (#000000), the file asks for Silver (#A4AAAC)`. The line stays on the job in **History**. This happens when no spool of that colour was loaded and the job took another spool of the same material, or when the slot was picked by hand. A similar colour doesn't count, and a colour you changed on purpose with a filament override isn't reported. To have the queue wait for a spool of the file's colour instead of using another one, turn on **Force color match**. A send that goes back to the queue or fails before the print starts carries no note.
+
 ### Per-job ETA
 
 Since 1.2.6 ([#2736](https://github.com/maziggy/bambuddy/issues/2736)) a queue row shows an **ETA** beside its print duration — the clock time the job would finish if it started now, in your configured 12/24-hour format. It is a per-job answer, not a forecast of the whole queue.
