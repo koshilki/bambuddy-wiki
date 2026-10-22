@@ -1379,6 +1379,8 @@ When **Print Queue** mode is selected, extra toggles appear on the VP card:
 - **Auto-dispatch** (on by default) — controls whether the queued job starts automatically or sits as `manual_start` until you click Start.
 - **Force color match** (off by default — opt-in) — when on, Bambuddy parses the per-slot filament requirements out of the sliced 3MF at upload time and pins them onto the queue item. The scheduler then refuses to dispatch onto a printer that does not have the exact filament **type and colour** loaded.
 
+**On a virtual printer that targets one printer,** the job waits on that printer with **Needs PLA #A4AAAC** (the material and colour it asked for) on the queue row. Load a spool of that material in exactly that colour, then press **Start**. A spool of a similar colour doesn't count, and neither does another variant (Basic, Matte, Silk) when the file names one. Two slots asking for the same filament need two spools of it. **Print Anyway** sends the job as it is.
+
 **Why this is opt-in.** Without `Force color match`, the scheduler still validates filament **type** when the job is "Any [model]" assigned (so a PLA job won't auto-dispatch onto a printer with only PETG loaded), but it does **not** check colour — the first available printer of the target model wins. This matches Bambuddy's behaviour before the toggle existed; turning it on is strict enough that it can leave a job sitting in the queue if no printer has the right colour loaded, which is sometimes what you want and sometimes not.
 
 **When to turn it on.** If you have multiple printers of the same model and care about colour accuracy — e.g. you don't want a job sliced for matte white PLA running on a printer that has black PLA loaded just because it happens to be free first.
