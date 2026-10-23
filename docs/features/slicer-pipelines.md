@@ -108,12 +108,14 @@ Each dropdown shows only entries that actually exist in your data, so empty opti
 
 ### In-flight actions
 
-- **Cancel** — visible on `queued` / `slicing` / `dispatching` / `in_progress` runs; cancels every still-pending copy
+- **Cancel** — visible on `queued` / `slicing` / `dispatching` / `in_progress` runs; cancels every still-pending copy. A run's queue jobs belong to whoever started it, so cancelling someone else's run takes the right to change everyone's queue jobs
 - **Retry failed** — visible on `partial_failure` / `failed` runs; re-runs only the copies that didn't complete (the successful copies are not re-printed)
 
 ### Clearing terminal runs
 
-The **Clear log** button (top-right of the filter row) opens a confirmation modal and then deletes every **terminal** run (`completed`, `failed`, `cancelled`, `partial_failure`). In-flight runs are **never** deleted — clearing during an active batch is safe.
+The **Clear log** button (top-right of the filter row) opens a confirmation modal and then deletes every **terminal** run (`completed`, `failed`, `cancelled`, `partial_failure`): your own, or everyone's if you may change everyone's queue jobs. In-flight runs are **never** deleted — clearing during an active batch is safe.
+
+A run started by someone else shows its source file and its queue jobs only if you can see them on the File Manager, Archives and Queue pages.
 
 ---
 

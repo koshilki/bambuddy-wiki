@@ -368,9 +368,9 @@ http://your-server:8000/api/v1
 | `/users/slim` | GET | Resolve user ids to names (id + username only) |
 | `/auth/me` | GET | Identify the key: its owner and the scopes it actually carries |
 | `/webhook/printer/{id}/status` | GET | Compact printer status for polling clients (see below) |
-| `/webhook/queue` | GET | Queue status (needs Read Status) |
+| `/webhook/queue` | GET | Queue status (needs Read Status): the pending and printing counts of every job, and the jobs the key's owner sees in the queue |
 | `/webhook/queue/add` | POST | Add a print to the queue (needs Manage Queue; an archive its owner did not create also needs Read Status, see "Queueing runs as the owner") |
-| `/webhook/printer/{id}/start` | POST | Start the next pending job in this printer's queue, releasing it if it waits for a manual start (needs Control Printer) |
+| `/webhook/printer/{id}/start` | POST | Start the next pending job in this printer's queue that the key's owner could start from the queue, releasing it if it waits for a manual start (needs Control Printer) |
 | `/webhook/printer/{id}/stop` | POST | Stop the current print, printing or paused (needs Control Printer) |
 | `/webhook/printer/{id}/cancel` | POST | Cancel the current print, printing or paused (needs Control Printer) |
 

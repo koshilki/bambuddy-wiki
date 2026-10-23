@@ -91,6 +91,10 @@ Assign multiple archives at once using the multi-select toolbar:
 !!! tip "Remove from Project"
     The same modal has a "Remove from project" option to unassign archives in bulk.
 
+### Shared Projects, Your Own Prints
+
+Projects are shared by everyone who can open them, but the archives and queue jobs in them stay their owners'. A project shows you the archives and queue jobs, and the timeline events, that you can see on the Archives and Queue pages: everyone's if you may see everyone's, otherwise your own, on the printers you can see. The same goes for the archive previews on the project cards and for the archives a BOM item or a File Manager folder is linked to: a link to an archive you cannot see reads as no link. You add, and remove, only the archives and jobs you could edit there. The project's progress and totals still count every print in it.
+
 ---
 
 ## :material-progress-check: Progress Tracking
