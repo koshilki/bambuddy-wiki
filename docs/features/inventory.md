@@ -492,7 +492,7 @@ The calculated cost is stored in the usage history record and aggregated to the 
 ### Cost Display
 
 - **Print modal**: Shows a real-time cost preview based on loaded filaments and their cost/kg values before starting a print
-- **Archive cards**: Display the total filament cost for each print. While a print is running the cost is an estimate, shown as `~` with a tooltip: it prices each slot at the spool in the tray it is mapped to, using the sliced file's estimate. When the print finishes it is replaced by the cost of what was actually used
+- **Archive cards**: Display the total filament cost for each print. While a print is running the cost is an estimate, shown as `~` with a tooltip: it prices each slot at the spool in the tray it is mapped to, using the sliced file's estimate. When the print completes it is replaced by the cost of what was actually used. A print that failed or was cancelled keeps the cost (and grams) of one full print of the file, and its tooltip says so: what that run used is in the archive's **Print Log** (card menu)
 - **Inventory table**: Includes a sortable "Cost/kg" column (hidden by default — enable via column settings)
 - **Statistics**: Total cost across all prints is included in the stats summary
 
