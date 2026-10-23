@@ -59,7 +59,8 @@ A cost center is created and staffed on the **Finance** page by an administrator
 **Private cost centers** are created automatically, one per user, and are the
 reason a single-user install works the moment billing is switched on. They
 belong to their owner: nobody else can print against them, and they cannot be
-edited or deleted by other administrators.
+renamed, deactivated or deleted. An administrator can set their budget; a
+budget of 0 refuses every print with an estimated cost.
 
 **Shared cost centers** are created by an administrator, who then adds members.
 Each member carries a **can print** flag, so somebody can be given visibility of
