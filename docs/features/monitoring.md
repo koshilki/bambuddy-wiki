@@ -167,7 +167,7 @@ Bambuddy records nozzle, bed, and chamber readings every 60 seconds (alongside t
 | **Chart** | Solid line for the recorded reading, dashed step-after line for the configured target. |
 
 !!! info "Read-only chambers"
-    On X1C / X1E sensor-only chambers and P2S models (no `M141` heater acceptance), the chart icon still works — Bambuddy is reading the chamber sensor either way, so the history is just as useful for spotting drift or for tuning ambient conditions.
+    On the sensor-only chambers of the X1C and P2S (no `M141` heater acceptance), the chart icon still works — Bambuddy is reading the chamber sensor either way, so the history is just as useful for spotting drift or for tuning ambient conditions.
 
 #### Retention
 

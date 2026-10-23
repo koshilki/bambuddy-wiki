@@ -353,7 +353,7 @@ For enclosed printers (X1 series, H2 series), control the chamber environment:
 ### Chamber Temperature
 
 - View current chamber temperature
-- Set target temperature on models with an active chamber heater (H2C, H2D, H2D Pro, H2S, X2D) — see [Temperature Setpoints](#temperature-setpoints) below
+- Set target temperature on models with an active chamber heater (H2C, H2D, H2D Pro, H2S, X1E, X2D) — see [Temperature Setpoints](#temperature-setpoints) below
 - Monitor heating/cooling status
 
 ### Chamber Light
@@ -404,7 +404,7 @@ On dual-nozzle printers (H2D), the temperature card opens a wider popover with s
 
 ### Chamber Temperature (heated-chamber models only)
 
-Setting a chamber target via `M141` is only supported on printers with an **active chamber heater**: H2C, H2D, H2D Pro, H2S, X2D. Sensor-only models (X1C, X1E, P2S, H2C plain variants) still show the chamber reading but the temperature card is read-only there — the route 400s before sending the G-code to avoid a silent no-op at the firmware level.
+Setting a chamber target via `M141` is only supported on printers with an **active chamber heater**: H2C, H2D, H2D Pro, H2S, X1E (up to 60 °C), X2D. Sensor-only models (X1C, P2S) still show the chamber reading but the temperature card is read-only there — the route 400s before sending the G-code to avoid a silent no-op at the firmware level.
 
 | Item | Value |
 |------|-------|

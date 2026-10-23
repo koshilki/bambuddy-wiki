@@ -41,7 +41,7 @@ All Bambu Lab printer models are supported:
 | LAN Mode | :material-check: | :material-check: | :material-check: |
 | Camera | :material-check: | :material-check: | :material-check: |
 | AMS Support | 4 units | 4 units | 4 units |
-| Chamber Heating | :material-check: | :material-check: | :material-check: |
+| Chamber Heating | :material-close: | :material-close: | :material-check: |
 | Dual Nozzle | :material-close: | :material-close: | :material-close: |
 
 ### X2 Series
@@ -71,7 +71,7 @@ All Bambu Lab printer models are supported:
 | Camera | :material-check: | :material-check: | :material-check: | :material-check: |
 | AMS Support | 4 units | 4 units | 4 units | 4 units |
 | Chamber Heating | :material-check: | :material-check: | :material-check: | :material-check: |
-| Dual Nozzle | :material-check: | :material-check: | :material-close: | :material-close: |
+| Dual Nozzle | :material-check: | :material-check: | :material-check: | :material-close: |
 | Nozzle Rack | :material-close: | :material-close: | 6-slot | :material-close: |
 
 ### P1 Series
@@ -95,7 +95,7 @@ All Bambu Lab printer models are supported:
 | LAN Mode | :material-check: |
 | Camera | :material-check: |
 | AMS Support | 4 units |
-| Chamber Heating | :material-check: |
+| Chamber Heating | :material-close: |
 | Dual Nozzle | :material-close: |
 
 ### A1 Series
