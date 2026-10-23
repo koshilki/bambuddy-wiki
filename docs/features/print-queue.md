@@ -24,7 +24,7 @@ The Queue page has **five tabs** along the top:
 |---|---|
 | **Queue** | The live print order — pending, scheduled, printing, and waiting items. Layout toggle switches between a flat list and per-printer section cards (each with aggregate item count, total time, and total filament weight). |
 | **Batches** | Batch orders — what each order asked for against what has actually been produced, with per-plate progress, what is still owed, and measured cost. See [Batch Orders](#batch-orders). The tab badge counts active orders. |
-| **History** | Past prints in a responsive 1 / 2 / 3-column grid. Two-line rich rows with filament color swatch, weight, type, user attribution, and inline error message on failed / skipped rows. Hover any thumbnail to see the full image at 192&times;192 next to it. |
+| **History** | Past prints in a responsive 1 / 2 / 3-column grid. Two-line rich rows with filament color swatch, weight, type, user attribution, and inline error message on failed / skipped rows. Hover any thumbnail to see it at 256&times;256 next to it. |
 | **Timeline** | A Gantt swimlane — one row per printer (plus per target_model and unassigned) with bars positioned by start time and sized by duration. Live NOW marker; 24-hour rolling window with 12-hour step buttons. Only committed schedules are rendered (see [Timeline View](#timeline-view) below). |
 | **Pipelines** | The Slicer Pipelines dashboard — runs and their jobs. Lives here rather than in its own sidebar entry so the Print Queue page is the single place to look for what is running and what ran. |
 
@@ -40,6 +40,10 @@ The Queue tab lets you:
 
 !!! warning "SD Card Required"
     An SD card must be inserted in your printer for the print queue to work. Files are transferred to the printer's SD card when prints start.
+
+### Where a job came from
+
+The :material-open-in-new: icon next to a job's name opens where the job came from: the archive on the **Archives** page, or the file in the **File Manager** (in its folder, marked and scrolled into view).
 
 ### Filament shown on queue cards
 
@@ -1323,7 +1327,7 @@ The **History** tab shows completed, failed, cancelled, and skipped prints in a 
 
 ### Thumbnail hover preview
 
-Hover any small thumbnail to pop out a **192&times;192 preview** next to it. Desktop only; touch devices skip this affordance.
+Hover any small thumbnail, on a history row or on a card in the **Queue** tab, to pop out a **256&times;256 preview** next to it. It opens to the left when there is no room on the right, and closes when you move away or scroll. Desktop only; touch devices skip this affordance.
 
 ### Batch parents in history
 

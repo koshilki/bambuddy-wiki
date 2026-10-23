@@ -184,6 +184,11 @@ The column view is keyboard-driven once it has focus (it takes it when the view 
 - Click ← to go back
 - Click root to return home
 
+### Links into the File Manager
+
+- `/files?folder=<id>` opens a folder.
+- `/files?highlight=<file id>` opens the file's folder and marks the file for a few seconds, scrolled into view. The queue's **View in File Manager** icon uses this. A file that was deleted, or that you can't see, shows a warning instead.
+
 ### Top-level sidebar entries
 
 The two entries at the top of the folder sidebar represent **scopes**, not folders:

@@ -340,12 +340,14 @@ Browse archives by date:
 
 ### Cross-View Highlighting
 
-Click an archive in calendar view or from a project's archive list:
+Click an archive in calendar view or in a project's archive list, or open one from the queue's :material-open-in-new: icon (the links use `/archives?highlight=<id>`):
 
-1. Switches to grid view automatically
+1. Switches to grid view automatically (a link from a project or the queue leaves the list view as it is)
 2. Scrolls to the selected archive
 3. Highlights with a yellow border for 5 seconds
 4. Great for finding specific prints across views
+
+When the current filters hide the archive, a warning says so instead.
 
 ---
 
