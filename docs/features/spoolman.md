@@ -183,6 +183,16 @@ the line names the mapping and which of the five produced it.
     changes colour the moment it finishes is telling you the mapping above
     resolved to a spool you did not expect.
 
+#### A spool replaced during a print
+
+When a spool runs out and you load a new one in the **same** slot (an
+external spool, or an AMS slot without a backup), assign the new spool to the
+slot while the print is still running. Bambuddy notes the layer the printer was
+on, and when the print ends it splits the filament between the two spools: the
+old one is charged up to that layer, the new one from there, weighed by the
+filament the G-code feeds in each part. A slot that had no spool when the print
+started is charged to the spool you assign, for the whole print.
+
 #### Disable AMS Estimated Weight Sync
 
 By default, Bambuddy syncs AMS weight estimates to Spoolman. If you prefer Spoolman's own usage-based tracking:
