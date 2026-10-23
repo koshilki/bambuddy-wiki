@@ -167,6 +167,8 @@ GET /printers/{id}/status
   "remaining_time": 3600,
   "layer_num": 120,
   "total_layers": 267,
+  "current_archive_id": 42,
+  "current_plate_id": 1,
   "temperatures": {
     "nozzle": 220,
     "nozzle_target": 220,
@@ -191,6 +193,8 @@ GET /printers/{id}/status
 ```
 
 `layer_num` is the current layer; `total_layers` is the layer count of the running job. `temperatures` carries a `_target` companion for the heaters that have one, and omits `chamber` entirely on models without a chamber sensor. `state` is the firmware's own value (`IDLE`, `PREPARE`, `SLICING`, `RUNNING`, `PAUSE`, `FINISH`, `FAILED`), not a lowercased Bambuddy label.
+
+`current_archive_id` is the [archive](#get-archive) of the running print while `state` is `RUNNING` or `PAUSE`, and `null` otherwise. Use it to tie a running print to its archive, for prints sent from the cloud and over LAN alike, rather than matching by file name or time, which can pick an earlier run of the same file. One case is matched by name: after a Bambuddy restart mid-print, a print that reports no job id (sent from Bambu Studio over LAN, Handy or the printer's screen) is linked to the printing archive of that name. It stays `null` until the archive exists, which can take a minute while Bambuddy downloads the 3MF from the printer at the start, for a print Bambuddy does not archive (Auto-archive off), and once the archive has been deleted. `current_plate_id` is the plate of the 3MF being printed, with the same `RUNNING`/`PAUSE` rule: the plate Bambuddy sent when it started the print, otherwise the one in the G-code path the printer reports.
 
 `full_code` identifies the fault: 16 hex characters for a fault from the printer's `hms[]` array (the four groups the printer screen shows), 8 for a `print_error`.
 
@@ -425,6 +429,8 @@ For text search use `GET /archives/search?q=...` (at least 2 characters; also ta
 ```
 
 `status` is one of `completed`, `failed`, `aborted`, `cancelled` or `printing`.
+
+`started_at` is when the print started, as Bambuddy saw it start, not when the archive was written: that waits for the 3MF download. `created_at` is when the archive was written. For a reprint, `started_at` and `completed_at` belong to the latest run.
 
 ### Get Archive
 
