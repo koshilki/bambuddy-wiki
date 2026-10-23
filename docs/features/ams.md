@@ -932,7 +932,7 @@ Hover over any AMS label (e.g. "AMS-A") on the Printers page to see a popover wi
 
 ### Label Persistence
 
-Labels are stored by AMS serial number, so they **persist when the AMS is moved to a different printer**. If the AMS serial is not available (older firmware), a fallback key based on printer ID and AMS position is used.
+Labels are stored by AMS serial number, so they **persist when the AMS is moved to a different printer**. If the AMS serial is not available (older firmware), a fallback key based on printer ID and AMS position is used. A label kept by position still shows once the unit reports its serial (as the AMS Lite does since 1.3.0, #3348); saving it again moves it to the serial, and **Clear** removes it either way.
 
 Custom labels also appear in the **Inventory page** location column alongside the slot identifier, making it easy to find spools across a print farm.
 
