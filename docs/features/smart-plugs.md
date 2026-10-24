@@ -68,6 +68,27 @@ Control any switch/light entity through Home Assistant:
 !!! tip "Flexible Integration"
     Home Assistant integration lets you use any device HA supports, including cloud-connected plugs that don't have local APIs.
 
+!!! warning "Home Assistant over https"
+    Bambuddy checks Home Assistant's certificate against its built-in list of
+    public certificate authorities (the `certifi` bundle, not your operating
+    system's or browser's), and the certificate must be issued for the hostname
+    in the URL. **Test Connection** says which check failed:
+
+    - **IP address mismatch / Hostname mismatch**: the URL uses an IP address
+      or another name. Enter the hostname the certificate was issued for, e.g.
+      `https://ha.example.org:8123` instead of `https://192.168.1.10:8123`.
+    - **self-signed certificate** or **unable to get local issuer
+      certificate**: the certificate comes from your own certificate authority,
+      or is Home Assistant's self-signed one. Add that authority to Bambuddy's
+      trust store. In Docker, see [Self Signed CA Certificate
+      Support](../getting-started/docker.md) (`USE_SYSTEM_TRUST_STORE`). On a
+      native install, copy the CA certificate to
+      `/usr/local/share/ca-certificates/` (as a `.crt` file), run
+      `sudo update-ca-certificates`, add `SSL_CERT_DIR=/etc/ssl/certs` to
+      the environment Bambuddy runs with (the installer's service reads it
+      from Bambuddy's `.env`) and restart Bambuddy.
+    - **certificate has expired**: renew it in Home Assistant.
+
 #### HA Scripts for Multi-Device Control
 
 Want to control multiple devices together (e.g., printer + enclosure fan)? Use Home Assistant scripts:
