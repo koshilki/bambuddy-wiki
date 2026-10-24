@@ -113,6 +113,17 @@ When an external camera is enabled, Bambuddy automatically:
 2. The camera opens in whichever view mode you used last (see below)
 3. The stream starts automatically
 
+#### From any page
+
+The :material-camera: **Cameras** button opens a printer's camera as an
+embedded overlay without going back to the Printers page. It sits at the end
+of the **Printers** row in the sidebar (in its corner, on hover, when the
+sidebar is collapsed) and, on narrow screens, in the header beside the
+bug-report button. The **C** key opens it too. It lists the printers you can see. A printer whose camera is
+already open is ticked; pick it again to close that camera. The button only
+appears for users with the `camera:view` and `printers:read` permissions;
+without both, no camera overlay is shown either.
+
 ### View Mode
 
 The camera button is a split control. The icon opens the camera the way you
@@ -147,10 +158,19 @@ When using embedded mode, the camera appears as a floating window:
 - **Draggable**: Click and drag the header to reposition
 - **Resizable**: Drag the bottom-right corner to resize
 - **Persistent**: Position and size are remembered per printer across sessions
-- **Navigation Persistence**: Open cameras stay open when navigating away and back to Printers page
-- **Minimize**: Click the minimize button to collapse to title bar
+- **On every page**: Open cameras stay open as you move between pages, and reopen after a reload
+- **Minimize**: Click the minimize button to collapse to title bar; the stream stops until you expand it again
+- **Pop out**: :material-open-in-new: opens the camera in its own window and closes the overlay. If the browser blocks the popup, the overlay stays.
 - **Close**: Click X to close the viewer
 - **Multi-Viewer**: Open cameras for multiple printers simultaneously
+
+A camera window has a :material-picture-in-picture-bottom-right: **Show as an
+overlay in Bambuddy** button that does the reverse: the camera opens as an
+overlay in the Bambuddy tab the window was opened from, or in another open
+Bambuddy tab if that one is gone or is signed in as someone who cannot see
+the printer, and the window closes. If no such tab is open, the window stays
+and says so. A camera tab you opened yourself cannot be
+closed by the page; it stops its stream and says the camera moved.
 
 !!! tip "Embedded Mode Benefits"
     Embedded mode keeps you on the main screen while monitoring prints - no need to switch between browser windows. Open multiple viewers to monitor your entire print farm at once.
