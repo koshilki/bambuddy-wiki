@@ -565,7 +565,7 @@ See all API keys in Settings:
 
 - Name
 - Created date
-- Last used
+- Last used (updated at most once a minute)
 - Permissions
 
 ### Revoking Keys

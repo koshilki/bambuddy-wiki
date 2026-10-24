@@ -267,6 +267,10 @@ Note: System groups (Administrators, Operators, Viewers) cannot be deleted.
 3. Click **Add User** and select a user
 4. Or edit a user and select their groups
 
+## When Bambuddy Doesn't Answer
+
+If Bambuddy, or its database, isn't answering when a page loads, a browser with a saved sign-in shows "Can't reach Bambuddy. Retrying…" instead of the login page. The saved sign-in is kept, and the page appears by itself once Bambuddy answers. Only an answer from Bambuddy goes to the login page: a sign-in that is invalid or expired, or a deactivated account.
+
 ## Changing Your Password
 
 Any authenticated user can change their own password:
