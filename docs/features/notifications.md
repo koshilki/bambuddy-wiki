@@ -655,6 +655,7 @@ When a camera snapshot is available (e.g. First Layer Complete, Print Started, P
 | **Outcome Confirmation** | A completed print that opted in to [outcome confirmation](archiving.md#post-print-outcome-confirmation) asks for its good/reject verdict. On **ntfy** and **Telegram** the notification carries Good/Reject buttons that answer it directly; every other channel, Pushover, Bark and Gotify included, gets a link that opens the outcome dialog in Bambuddy. Set *External URL* so these links work from a phone — without it they point at `APP_URL`, which defaults to `localhost`. Telegram can take a 👍 / 👎 reaction on the message instead, which needs no External URL — see [Verdict mode](#verdict-mode). The one-tap verdict links are also available as `{good_url}` / `{reject_url}` for your own templates, but the default body leaves them out, because anything that opens links in a message (a preview card, a mail scanner) would reach them. On by default — it only ever fires for prints where you enabled *Ask for Outcome*, so this toggle just mutes a channel. |
 | **Missing Spool Assignment** | Print started with required AMS trays that have no assigned spool (off by default) |
 | **First Layer Complete** | First layer finished — check adhesion remotely (includes camera snapshot) |
+| **Pause Coming Up** | A pause added in the slicer is a few minutes away, so you can be at the printer for it (inserts, magnets, a colour swap). Sent once per pause, 5 minutes before by default, while the printer runs at Standard speed; set the minutes under **Settings** > **Notifications** > **Pause Heads-Up** (1-120). Off by default. |
 | **Bed Cooled** | Bed temperature dropped below threshold after print (configurable in Settings) |
 | **Progress Milestones** | At 25%, 50%, 75%, counted from the first printed layer. Some printers report a meaningless percentage while they heat and calibrate, so nothing fires before layer 1. A printer that reaches layer 1 already past a milestone sends that one milestone then. |
 
@@ -847,6 +848,15 @@ Insert dynamic content with `{variable}`:
 
 - `{printer}` - Printer name
 - `{filename}` - Print filename
+- `{total_layers}` - Total layer count
+
+**Pause Coming Up:**
+
+- `{printer}` - Printer name
+- `{filename}` - Print filename
+- `{time_to_pause}` - Time until the pause, e.g. `5m`
+- `{eta}` - Clock time of the pause
+- `{layer}` - Layer the printer pauses at
 - `{total_layers}` - Total layer count
 
 **Bed Cooled:**
@@ -1077,6 +1087,9 @@ Useful during maintenance or troubleshooting.
 
 !!! tip "Bed Cooled Threshold"
     Configure the bed cooled temperature threshold in **Settings** > **Notifications**. Default is 35°C. The notification fires as soon as the printer reports the bed at or below the threshold — no timeout.
+
+!!! tip "Pause Heads-Up"
+    Set how many minutes before a slicer pause **Pause Coming Up** is sent in **Settings** > **Notifications** > **Pause Heads-Up**. Default is 5 minutes. A print that starts with its pause already that close sends it straight away.
 
 !!! tip "Plate Not Empty Bypasses Quiet Hours"
     Plate detection notifications are always sent immediately, even during quiet hours or when digest mode is enabled. This ensures you're alerted to potential issues before a print starts.

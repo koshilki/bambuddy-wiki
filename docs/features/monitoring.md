@@ -242,6 +242,12 @@ When a print is active, you'll see:
 - **Current layer** - Layer X of Y
 - **Time remaining** - Estimated time to completion
 - **Filament used** - Grams consumed so far
+- **Next pause** (:material-pause:, blue) - For a print with a pause added in the slicer, the time until the printer gets there and the clock time, e.g. `20m to pause · 20:27`. Hover it for the layer. With several pauses it counts down to the next one, and moves on once the printer has reached it. Until the printer reports a remaining time it shows the layer only, and so it does in a speed mode other than Standard. Shown on cards of size M and up.
+
+!!! note "Where the pause time comes from"
+    Bambuddy reads the pauses from the print's G-code in its archived 3MF: Bambu Studio and OrcaSlicer write a pause as `M400 U1`, at the start of the layer it is set on, and record the time left at that point. The countdown is the printer's remaining time minus that. The slicer's times are for Standard speed, so in Silent, Sport or Ludicrous the card shows the pause's layer instead of a time, and no Pause Coming Up notification is sent. Prints with no archived 3MF, such as a print Bambuddy could not download, show no pause time.
+
+    To be told before a pause, turn on [Pause Coming Up](notifications.md#print-events) for a notification channel.
 
 ### Status Sorting
 
