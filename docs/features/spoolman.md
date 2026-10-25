@@ -124,7 +124,7 @@ Skipped spools show:
 When prints complete, Bambuddy reports **per-filament** usage to Spoolman:
 
 1. Bambuddy extracts per-filament usage data from the archived 3MF file (slicer estimates)
-2. For partial prints, per-layer G-code analysis provides precise consumption up to the exact failure layer
+2. For partial prints, the per-layer G-code gives each filament's share fed up to the failure layer, and that share of the slicer estimate is reported
 3. On completion, each spool's usage is reported individually to Spoolman (multi-material support)
 4. Spoolman updates spool quantities accordingly
 5. If no 3MF data is available, AMS remain% delta is used as a fallback

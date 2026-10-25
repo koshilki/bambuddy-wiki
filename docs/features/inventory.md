@@ -416,7 +416,7 @@ For all spools — both Bambu Lab (RFID) and third-party — Bambuddy uses the p
 - For **queue prints**: uses the stored AMS mapping for exact slot-to-tray resolution
 - For **single-filament prints**: uses the printer's active tray for reliable tracking
 - For **completed** prints: uses the full slicer estimate
-- For **failed/aborted** prints: uses per-layer G-code data for accurate partial tracking, with linear progress scaling as fallback
+- For **failed/aborted** prints: each filament's slicer estimate, times the share of that filament the G-code had fed when the print stopped, with linear progress scaling as fallback. A cancelled print never costs more than the finished one
 - For **mid-print spool changes**: when a spool runs out and you load a new one in the same slot, assign the new spool while the print is still running. The print is split between the two at the layer you assigned it: the old spool is charged up to there, the new one from there on, weighed by the filament the G-code feeds in each part. A slot that had no spool at print start is charged to the spool you assign, for the whole print. A spool unlinked mid-print keeps its share: the assignments from print start are kept
 
 ### AMS Remain% Delta (Fallback)
@@ -427,7 +427,7 @@ When 3MF data is unavailable (e.g., G-code-only prints without an archived 3MF f
 - Only used for trays not already tracked via 3MF
 
 !!! tip "Accuracy"
-    3MF estimates come from the slicer and are very accurate for completed prints. For partial prints, per-layer G-code analysis provides precise filament consumption up to the exact layer where the print stopped. If layer data is unavailable, a linear estimate (total × progress%) is used as a final fallback.
+    3MF estimates come from the slicer and are very accurate for completed prints. For partial prints, the per-layer G-code shows how far each filament had got when the print stopped, and that share of the slicer estimate is charged. Purges count when they happen: a filament's purge at an AMS change is charged as soon as that filament starts. If layer data is unavailable, a linear estimate (total × progress%) is used as a final fallback.
 
 ### Usage History
 
