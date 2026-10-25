@@ -640,12 +640,14 @@ The Controls section displays compact fan badges showing real-time speeds:
 | Fan | Icon | Color | Description |
 |-----|:----:|:-----:|-------------|
 | **Part Cooling** | :material-fan: | Cyan | Cools printed layers (0-100%) |
-| **Auxiliary** | :material-weather-windy: | Blue | Chamber airflow (0-100%) |
-| **Left Auxiliary** | :material-weather-windy: | Indigo | Second part cooling fan on P2S/X2D (0-100%) |
+| **Auxiliary** | :material-weather-windy: | Blue | Chamber airflow (0-100%). **Left Auxiliary** on the X2D |
+| **Left Auxiliary** | :material-weather-windy: | Indigo | Second part cooling fan on the P2S (0-100%). **Right Auxiliary** on the X2D |
 | **Chamber** / **Exhaust** | :material-air-filter: | Green | Exhausts hot air from enclosure (0-100%) |
 
 !!! info "P2S / X2D accessory fans"
-    The **Left Auxiliary** fan and the **Exhaust** fan are separate hardware on these models — optional add-on kits on the P2S, fitted from the factory on the X2D. Their badges appear **only when the printer reports the fan**, so a base P2S without the kits simply doesn't show them.
+    The second auxiliary fan and the **Exhaust** fan are separate hardware on these models — optional add-on kits on the P2S, fitted from the factory on the X2D. Their badges appear **only when the printer reports the fan**, so a base P2S without the kits simply doesn't show them.
+
+    The two models number their auxiliary fans the other way round. On the P2S the second fan is the left one, so the card shows **Left Auxiliary** then **Auxiliary**. On the X2D it is the right one, so the card shows **Left Auxiliary** then **Right Auxiliary**. Either way the badges read left to right.
 
     On P2S/X2D the enclosure fan badge is labelled **Exhaust** rather than **Chamber**, matching the naming used by the printer's own screen and by Bambu Studio. Other enclosed models (X1 / P1S / H2 series) keep the **Chamber** label and always show the badge.
 
@@ -662,7 +664,7 @@ Click any fan badge to open a popover with quick-select buttons (Off + three use
 |------|-------|
 | Bounds | `0–100 %` (0 turns the fan off) |
 | Default presets | Off, 50 %, 75 %, 100 % |
-| Endpoint | `POST /printers/{id}/fan-speed?fan=part\|aux\|aux2\|chamber&speed=N` (`aux2` = left auxiliary, P2S/X2D) |
+| Endpoint | `POST /printers/{id}/fan-speed?fan=part\|aux\|aux2\|chamber&speed=N` (`aux2` = the second auxiliary fan: left on the P2S, right on the X2D) |
 | Encoding | Percentage is converted server-side to a 0–255 PWM value before being sent to the printer |
 
 The optimistic UI update applies the new speed to the badge immediately; an error toast plus revert fires if the printer rejects the command.
