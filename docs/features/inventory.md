@@ -260,6 +260,51 @@ don't, so you can see at a glance whether a spool is fully configured. An offlin
 printer says so instead of showing an empty grid — Bambuddy reads calibration
 profiles from the printer itself.
 
+#### Profile defaults for new spools
+
+Presets and K profiles describe the filament, not the roll, so the spool that
+replaces an empty one wants the same ones. Set them up once per product and
+every new spool of it starts with them.
+
+**Saving a default.** Set up a spool's Printers tab (and its preset on the
+Filament tab), then tick **Save as default for new … spools** below the tab
+and save the spool. The default holds the spool's preset, the presets per
+printer model and the K profiles. Saving a default again for the same product
+replaces it.
+
+**All colours or one.** **All colours** is preselected: one default covers every
+colour of the product, Brand + Material + Subtype. Pick **Only <colour>** for a
+colour you calibrated on its own; it needs the spool's colour name, so a spool
+without one (set on **Color & Cost**) can only save the all-colours default. A colour's default wins over the all-colours
+one per preset and per hotend, and what it leaves out still comes from the
+all-colours default — so the first spool of a colour you never calibrated
+still gets the product's K profiles.
+
+**What gets it.** Every way a spool is added: the spool form, **Quick Add (Stock)**, a
+bulk add, an RFID spool added automatically or with **Add to Inventory**,
+SpoolBuddy, and a reorder from the forecast. In the spool form you see it
+straight away: once Brand, Material and Subtype are filled in, the Printers
+tab fills itself in from the default and says so. What you set yourself wins:
+the default fills only the hotends and models you left empty, and you can
+change or remove anything it put in before saving. A spool saved without a
+preset of its own gets the default's. Elsewhere only what the new spool doesn't
+have yet is filled in — an RFID spool keeps the preset its tag names and gets
+your presets per model and K profiles. A CSV import is taken as it is.
+
+**A copy, not a link.** Changing or deleting a default later doesn't touch the
+spools you already have. To bring existing stock in line, open **Settings →
+Filament → Profile defaults** and use **Apply to existing spools**: it fills in
+what active spools of that product don't have yet, and changes nothing they
+already have.
+
+**Changing a default** is the same as saving one: change a spool's Printers
+tab, tick **Save as default** and save. **Settings → Filament → Profile
+defaults** lists them and deletes them. A printer you delete takes its K
+profiles out of every default.
+
+Both inventory modes share the defaults: they are keyed on the product, which a
+Spoolman spool has as well.
+
 ---
 
 ## :material-link-variant: AMS Slot Assignment

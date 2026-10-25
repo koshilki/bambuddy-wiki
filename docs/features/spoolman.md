@@ -398,6 +398,12 @@ Add spools directly in Spoolman:
 2. Add new spool
 3. Spool appears in Bambuddy when loaded
 
+### Profile defaults
+
+[Profile defaults](inventory.md#profile-defaults-for-new-spools) work the same in Spoolman mode: a spool added from Bambuddy, or by the AMS sync, starts with its product's presets and K profiles. The default's own preset goes into the spool's `bambu_slicer_filament` fields, except on a spool the AMS sync adds from a tag that names its preset, which keeps the tag's. The presets per model and the K profiles stay in Bambuddy, as they do for any Spoolman spool.
+
+A spool added in Spoolman's own interface never passes through Bambuddy, so it gets no default when it is created. **Settings → Filament → Profile defaults → Apply to existing spools** fills it in afterwards.
+
 ---
 
 ## :material-database: Inventory View
